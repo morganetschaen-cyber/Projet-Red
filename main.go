@@ -3,8 +3,8 @@ package main
 personnage = {
 "nom": "",
 "classe": "",
-"niveau": "",
-"pv_max": "",
-"pv_actuels": "",
-"inventaire": ""
+"niveau": 0,
+"pv_max": 0,
+"pv_actuels": 0,
+"inventaire": []
 }
