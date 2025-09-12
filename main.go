@@ -15,10 +15,10 @@ func main() {
 	heros := Character{
 		Nom:        "Eva",
 		Classe:     "",
-		Niveau:     0,
-		PVMax:      0,
-		PVActuels:  0,
-		Inventaire: []string{},
+		Niveau:     1,
+		PVMax:      100,
+		PVActuels:  50,
+		Inventaire: []string{"Potion", "Potion", "Potion"},
 	}
 
 	fmt.Println(heros)
