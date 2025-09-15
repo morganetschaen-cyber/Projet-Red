@@ -36,3 +36,6 @@ func main() {
 
 	displayInfo(heros)
 }
+
+func takePot(c *Character) {
+}
