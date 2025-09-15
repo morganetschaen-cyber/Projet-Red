@@ -51,6 +51,7 @@ func main() {
 
 		switch choix {
 		case 1:
+			displayInfo(heros)
 		case 2:
 		case 3:
 			fmt.Println("Au revoir !")
