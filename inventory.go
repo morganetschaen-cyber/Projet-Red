@@ -19,4 +19,15 @@ func accessInventory(inventory []string) {
 }
 
 func takePot(c *Character) {
+	found := false
+	for _, item := range c.Inventaire {
+		if item == "Potion" {
+			found = true
+			break
+		}
+	}
+
+	if !found {
+		fmt.Println("Vous n’avez plus de potions !")
+	}
 }
