@@ -22,9 +22,17 @@ func initCharacter(nom, classe string, niveau, pvMax, pvActuels int, inventaire 
 	}
 }
 
+func displayInfo(c Character) {
+	fmt.Println("Nom :", c.Nom)
+	fmt.Println("Classe :", c.Classe)
+	fmt.Println("Niveau :", c.Niveau)
+	fmt.Println("Points de vie :", c.PVActuels, "/", c.PVMax)
+	fmt.Println("Inventaire :", c.Inventaire)
+}
+
 func main() {
 	inventaire := []string{"Potion", "Potion", "Potion"}
 	heros := initCharacter("Eva", "Elfe", 1, 100, 50, inventaire)
 
-	fmt.Println(heros)
+	displayInfo(heros)
 }
