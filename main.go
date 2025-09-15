@@ -53,6 +53,24 @@ func main() {
 		case 1:
 			displayInfo(heros)
 		case 2:
+			for {
+				fmt.Println("\n--- Inventaire ---")
+				accessInventory(heros.Inventaire)
+				fmt.Println("1. Utiliser une potion")
+				fmt.Println("9. Retour")
+
+				var sub int
+				fmt.Scan(&sub)
+
+				if sub == 9 {
+					break
+				} else if sub == 1 {
+					fmt.Println(" ")
+				} else {
+					fmt.Println("Choix invalide.")
+				}
+			}
+
 		case 3:
 			fmt.Println("Au revoir !")
 			return
