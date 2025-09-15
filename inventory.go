@@ -17,3 +17,6 @@ func accessInventory(inventory []string) {
 		fmt.Printf("- %s (x%d)\n", item, qty)
 	}
 }
+
+func takePot(c *Character) {
+}
