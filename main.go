@@ -36,3 +36,27 @@ func main() {
 
 	displayInfo(heros)
 }
+func main() {
+	heros := initCharacter("TonNom", "Elfe", 1, 100, 40, []string{"Potion", "Potion", "Potion"})
+
+	for {
+		fmt.Println("\n--- Menu principal ---")
+		fmt.Println("1. Afficher les informations du personnage")
+		fmt.Println("2. Accéder à l’inventaire")
+		fmt.Println("3. Quitter")
+
+		var choix int
+		fmt.Print("Votre choix : ")
+		fmt.Scan(&choix)
+
+		switch choix {
+		case 1:
+		case 2:
+		case 3:
+			fmt.Println("Au revoir !")
+			return
+		default:
+			fmt.Println("Choix invalide.")
+		}
+	}
+}
