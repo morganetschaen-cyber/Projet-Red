@@ -51,4 +51,5 @@ func removeInventory(c *Character, item string) {
 			return
 		}
 	}
+	fmt.Println(item, "n'est pas dans l'inventaire.")
 }
