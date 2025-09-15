@@ -44,3 +44,5 @@ func removeInventory(c *Character, item string) {
 			fmt.Println(item, "a été retiré de l'inventaire.")
 			return
 		}
+	}
+}
