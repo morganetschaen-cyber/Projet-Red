@@ -7,4 +7,13 @@ func accessInventory(inventory []string) {
 		fmt.Println("Votre inventaire est vide.")
 		return
 	}
+
+	fmt.Println("Inventaire du personnage :")
+	counts := make(map[string]int)
+	for _, item := range inventory {
+		counts[item]++
+	}
+	for item, qty := range counts {
+		fmt.Printf("- %s (x%d)\n", item, qty)
+	}
 }
