@@ -65,7 +65,7 @@ func main() {
 				if sub == 9 {
 					break
 				} else if sub == 1 {
-					fmt.Println(" ")
+					takePot(&heros)
 				} else {
 					fmt.Println("Choix invalide.")
 				}
