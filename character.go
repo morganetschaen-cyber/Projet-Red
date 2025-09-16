@@ -78,13 +78,6 @@ func displayInfo(c Character) {
 	fmt.Println("Inventaire :", c.Inventaire)
 }
 
-func main() {
-	inventaire := []string{"Potion", "Potion", "Potion"}
-	heros := initCharacter("Eva", "Elfe", 1, 100, 50, inventaire)
-
-	displayInfo(heros)
-}
-
 func isDead(c *Character) bool {
 	if c.PVActuels <= 0 {
 		fmt.Println(c.Nom, "est mort!")
