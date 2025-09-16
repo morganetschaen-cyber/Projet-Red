@@ -20,6 +20,10 @@ func initGoblin() Monster {
 func goblinPattern(g Monster, c *Character, tour int) {
 	degats := g.Attaque
 
+	if tour%3 == 0 {
+		degats = g.Attaque * 2
+	}
+
 	c.PVActuels -= degats
 	if c.PVActuels < 0 {
 		c.PVActuels = 0
