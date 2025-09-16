@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	heros := initCharacter("TonNom", "Elfe", 1, 100, 40, []string{"Potion", "Potion", "Potion"})
+	heros := characterCreation()
 
 	for {
 		fmt.Println("\n--- Menu principal ---")
