@@ -15,13 +15,6 @@ type Character struct {
 	Equipment	Equipment
 }
 
-type Equipment struct {
-	Tete  string
-	Torse string
-	Pieds string
-}
-
-
 func initCharacter(nom, classe string, niveau, pvMax, pvActuels int, inventaire []string) Character {
 	return Character{
 		Nom:        nom,
@@ -32,6 +25,7 @@ func initCharacter(nom, classe string, niveau, pvMax, pvActuels int, inventaire 
 		Inventaire: inventaire,
 		Skill:      []string{"Coup de poing"},
 		Argent:     100
+		Equipment: Equipment{},
 	}
 }
 
