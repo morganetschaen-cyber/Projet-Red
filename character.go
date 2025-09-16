@@ -30,6 +30,10 @@ func characterCreation() Character {
 	fmt.Println("Choisissez le nom de votre personnage :")
 	fmt.Scan(&nom)
 
+	if len(nom) > 0 {
+		nom = strings.ToUpper(nom[:1]) + strings.ToLower(nom[1:])
+	}
+
 	return Character{Nom: nom}
 }
 
