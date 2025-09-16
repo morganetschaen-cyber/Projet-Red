@@ -4,29 +4,29 @@ import "fmt"
 import "strings"
 
 type Character struct {
-	Nom        string
-	Classe     string
-	Niveau     int
-	PVMax      int
-	PVActuels  int
-	Inventaire []string
-	Skill      []string
-	Argent     int
-	Equipment	Equipment
+	Nom                string
+	Classe             string
+	Niveau             int
+	PVMax              int
+	PVActuels          int
+	Inventaire         []string
+	Skill              []string
+	Argent             int
+	Equipment          Equipment
 	CapaciteInventaire int
 }
 
 func initCharacter(nom, classe string, niveau, pvMax, pvActuels int, inventaire []string) Character {
 	return Character{
-		Nom:        nom,
-		Classe:     classe,
-		Niveau:     niveau,
-		PVMax:      pvMax,
-		PVActuels:  pvActuels,
-		Inventaire: inventaire,
-		Skill:      []string{"Coup de poing"},
-		Argent:     100
-		Equipment:  Equipment{},
+		Nom:                nom,
+		Classe:             classe,
+		Niveau:             niveau,
+		PVMax:              pvMax,
+		PVActuels:          pvActuels,
+		Inventaire:         inventaire,
+		Skill:              []string{"Coup de poing"},
+		Argent:             100,
+		Equipment:          Equipment{},
 		CapaciteInventaire: 10,
 	}
 }
