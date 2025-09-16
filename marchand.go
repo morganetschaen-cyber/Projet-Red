@@ -10,7 +10,8 @@ func marchand(c *Character) {
 		fmt.Println("1. Potion de vie")
 		fmt.Println("2. Potion de poison (6 pièces d'or)")
 		fmt.Println("3. Livre de Sort : Boule de Feu (25 pièces d'or)")
-		fmt.Println("4. Retour au menu")
+		fmt.Println("4. Extension d'inventaire (20 pièces d'or)")
+		fmt.Println("5. Retour au menu")
 
 		var choix int
 		fmt.Scan(&choix)
@@ -43,8 +44,17 @@ func marchand(c *Character) {
 				fmt.Println("Pas assez d'argent !")
 			}
 		case 4:
+			if c.Argent >= 20 {
+				c.Argent -= 20
+				c.CapaciteInventaire += 5
+				fmt.Println("Votre inventaire peut contenir 5 objets de plus !")
+			} else {
+				fmt.Println("Pas assez d'or.")
+			}
+		case 5:
 			fmt.Println("Retour au menu principal.")
 			return
+
 		default:
 			fmt.Println("Choix invalide.")
 		}

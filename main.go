@@ -25,6 +25,7 @@ func main() {
 				accessInventory(heros.Inventaire)
 				fmt.Println("1. Utiliser une potion")
 				fmt.Println("2. Utiliser une potion de poison")
+				fmt.Println("3. Utiliser une augmentation d’inventaire")
 				fmt.Println("9. Retour")
 
 				var sub int
