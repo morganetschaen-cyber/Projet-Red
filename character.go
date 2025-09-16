@@ -1,6 +1,7 @@
 package main
 
 import "fmt"
+import "strings"
 
 type Character struct {
 	Nom        string
@@ -22,6 +23,14 @@ func initCharacter(nom, classe string, niveau, pvMax, pvActuels int, inventaire 
 		Inventaire: inventaire,
 		Skill:      []string{"Coup de poing"},
 	}
+}
+
+func characterCreation() Character {
+	var nom string
+	fmt.Println("Choisissez le nom de votre personnage :")
+	fmt.Scan(&nom)
+
+	return Character{Nom: nom}
 }
 
 func displayInfo(c Character) {
