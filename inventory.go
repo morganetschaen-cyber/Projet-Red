@@ -62,3 +62,12 @@ func canAddItem(c *Character) bool {
 	}
 	return true
 }
+
+func hasItem(inventory []string, item string) bool {
+	for _, v := range inventory {
+		if v == item {
+			return true
+		}
+	}
+	return false
+}
