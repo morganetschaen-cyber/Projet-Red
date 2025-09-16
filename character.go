@@ -36,3 +36,13 @@ func main() {
 
 	displayInfo(heros)
 }
+
+func isDead(c *Character) bool {
+	if c.PVActuels <= 0 {
+		fmt.Println(c.Nom, "est mort!")
+		c.PVActuels = c.PVMax / 2
+		fmt.Println(c.Nom, "a été ressuscité avec", c.PVActuels, "PV.")
+		return true
+	}
+	return false
+}
