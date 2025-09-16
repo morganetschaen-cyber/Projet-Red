@@ -2,10 +2,12 @@ package main
 
 import "fmt"
 
+var premierVisite bool = true
+
 func marchand(c *Character) {
 	for {
 		fmt.Println("\n--- Marchand ---")
-		fmt.Println("1. Potion de vie (3 pièces d'or)")
+		fmt.Println("1. Potion de vie")
 		fmt.Println("2. Potion de poison (6 pièces d'or)")
 		fmt.Println("3. Livre de Sort : Boule de Feu (25 pièces d'or)")
 		fmt.Println("4. Retour au menu")
@@ -15,7 +17,11 @@ func marchand(c *Character) {
 
 		switch choix {
 		case 1:
-			if c.Argent >= 3 {
+			if premierVisite {
+				fmt.Println("Cette potion est gratuite pour votre première visite !")
+				addInventory(c, "Potion de vie")
+				premierVisite = false
+			} else if c.Argent >= 3 {
 				c.Argent -= 3
 				addInventory(c, "Potion de vie")
 			} else {
