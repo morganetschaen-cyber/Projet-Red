@@ -6,3 +6,12 @@ type Monster struct {
 	PVActuels int
 	Attaque   int
 }
+
+func initGoblin() Monster {
+	return Monster{
+		Nom:       "Gobelin d’entraînement",
+		PVMax:     40,
+		PVActuels: 40,
+		Attaque:   5,
+	}
+}
