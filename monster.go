@@ -15,3 +15,5 @@ func initGoblin() Monster {
 		Attaque:   5,
 	}
 }
+func goblinPattern(g Monster, c *Character, tour int) {
+}
