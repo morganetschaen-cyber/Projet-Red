@@ -5,9 +5,9 @@ import "fmt"
 func marchand(c *Character) {
 	for {
 		fmt.Println("\n--- Marchand ---")
-		fmt.Println("1. Potion de vie")
-		fmt.Println("2. Potion de poison")
-		fmt.Println("3. Livre de Sort : Boule de Feu")
+		fmt.Println("1. Potion de vie (3 pièces d'or)")
+		fmt.Println("2. Potion de poison (6 pièces d'or)")
+		fmt.Println("3. Livre de Sort : Boule de Feu (25 pièces d'or)")
 		fmt.Println("4. Retour au menu")
 
 		var choix int
@@ -15,17 +15,33 @@ func marchand(c *Character) {
 
 		switch choix {
 		case 1:
-			addInventory(c, "Potion de vie")
+			if c.Argent >= 3 {
+				c.Argent -= 3
+				addInventory(c, "Potion de vie")
+			} else {
+				fmt.Println("Pas assez d'argent !")
+			}
 		case 2:
-			addInventory(c, "Potion de poison")
+			if c.Argent >= 6 {
+				c.Argent -= 6
+				addInventory(c, "Potion de poison")
+			} else {
+				fmt.Println("Pas assez d'argent !")
+			}
 		case 3:
-			addInventory(c, "Livre de sort : Boule de Feu")
-			spellBook(c)
+			if c.Argent >= 25 {
+				c.Argent -= 25
+				addInventory(c, "Livre de Sort: Boule de feu")
+				spellBook(c)
+			} else {
+				fmt.Println("Pas assez d'argent !")
+			}
 		case 4:
 			fmt.Println("Retour au menu principal.")
 			return
 		default:
 			fmt.Println("Choix invalide.")
 		}
+		fmt.Println("Argent actuel :", c.Argent)
 	}
 }
