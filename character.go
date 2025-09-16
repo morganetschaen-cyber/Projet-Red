@@ -12,6 +12,7 @@ type Character struct {
 	Inventaire []string
 	Skill      []string
 	Argent     int
+	Equipment	Equipment
 }
 
 type Equipment struct {
