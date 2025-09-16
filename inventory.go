@@ -39,8 +39,10 @@ func takePot(c *Character) {
 }
 
 func addInventory(c *Character, item string) {
-	c.Inventaire = append(c.Inventaire, item)
-	fmt.Println(item, "a été ajouté à votre inventaire !")
+	if canAddItem(c) {
+		c.Inventaire = append(c.Inventaire, item)
+		fmt.Println(item, "a été ajouté à votre inventaire !")
+	}
 }
 
 func removeInventory(c *Character, item string) {
@@ -52,4 +54,11 @@ func removeInventory(c *Character, item string) {
 		}
 	}
 	fmt.Println(item, "n'est pas dans l'inventaire.")
+}
+func canAddItem(c *Character) bool {
+	if len(c.Inventaire) >= 10 {
+		fmt.Println("Inventaire plein! Vous ne pouvez pas ajouter cet item.")
+		return false
+	}
+	return true
 }
