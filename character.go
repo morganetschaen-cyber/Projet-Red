@@ -20,7 +20,6 @@ func initCharacter(nom, classe string, niveau, pvMax, pvActuels int, inventaire 
 		PVMax:      pvMax,
 		PVActuels:  pvActuels,
 		Inventaire: inventaire,
-		Skill:      []string{"Coup de poing"},
 	}
 }
 
