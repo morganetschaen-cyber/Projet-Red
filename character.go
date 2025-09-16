@@ -27,6 +27,8 @@ func initCharacter(nom, classe string, niveau, pvMax, pvActuels int, inventaire 
 
 func characterCreation() Character {
 	var nom string
+	var classe string
+
 	fmt.Println("Choisissez le nom de votre personnage :")
 	fmt.Scan(&nom)
 
@@ -34,7 +36,32 @@ func characterCreation() Character {
 		nom = strings.ToUpper(nom[:1]) + strings.ToLower(nom[1:])
 	}
 
-	return Character{Nom: nom}
+	fmt.Println("Choisissez votre classe (Humain / Elfe / Nain) :")
+	fmt.Scan(&classe)
+
+	var pvMax int
+	switch strings.ToLower(classe) {
+	case "humain":
+		pvMax = 100
+	case "elfe":
+		pvMax = 80
+	case "nain":
+		pvMax = 120
+	default:
+		fmt.Println("Classe invalide, par défaut vous serez Humain.")
+		pvMax = 100
+		classe = "Humain"
+	}
+
+	return Character{
+		Nom:        nom,
+		Classe:     classe,
+		PVMax:      pvMax,
+		PVActuels:  pvMax / 2,
+		Niveau:     1,
+		Inventaire: []string{},
+		Skill:      []string{"Coup de poing"},
+	}
 }
 
 func displayInfo(c Character) {
