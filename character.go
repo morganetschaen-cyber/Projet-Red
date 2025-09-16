@@ -9,6 +9,7 @@ type Character struct {
 	PVMax      int
 	PVActuels  int
 	Inventaire []string
+	Skill      []string
 }
 
 func initCharacter(nom, classe string, niveau, pvMax, pvActuels int, inventaire []string) Character {
