@@ -48,3 +48,13 @@ func isDead(c *Character) bool {
 	}
 	return false
 }
+func spellBook(c *Character) {
+	for _, s := range c.Skill {
+		if s == "Boule de feu" {
+			fmt.Println("Vous connaissez déjà ce sort.")
+			return
+		}
+	}
+	c.Skill = append(c.Skill, "Boule de feu")
+	fmt.Println("Vous avez appris le sort : Boule de feu")
+}
