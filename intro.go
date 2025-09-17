@@ -26,4 +26,20 @@ func afficherIntro() bool {
 	fmt.Println(centerText("+--------------------------------------------------+", width))
 	fmt.Println("\033[0m")
 	return true
+
+	fmt.Println("Bienvenue dans le monde de Krynn...")
+	fmt.Println("Êtes-vous prêt à entrer ?")
+	fmt.Println("1. Oui  |  2. Non")
+
+	var choix int
+	fmt.Print("> ")
+	fmt.Scan(&choix)
+
+	if choix == 2 {
+		fmt.Println("Vous tournez le dos aux ténèbres... mais pour combien de temps ?")
+		return false
+	}
+
+	fmt.Println("...Très bien. Le destin vous attend.")
+	return true
 }
