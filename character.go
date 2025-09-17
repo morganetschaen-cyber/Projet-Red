@@ -63,7 +63,7 @@ func characterCreation() Character {
 		Nom:                nom,
 		Classe:             classe,
 		PVMax:              pvMax,
-		PVActuels:          pvMax / 2,
+		PVActuels:          pvMax,
 		Niveau:             1,
 		Inventaire:         []string{},
 		Skill:              []string{"Coup de poing"},
