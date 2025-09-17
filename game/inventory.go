@@ -78,39 +78,40 @@ func PoisonPot(c *Character) {
 }
 
 func AfficherInventaire(c *Character) {
-	for {
-		fmt.Println("\n--- Inventaire ---")
-		AccessInventory(c.Inventaire)
+	func AfficherInventaire(c *Character) {
+		for {
+			fmt.Println("\n--- Inventaire ---")
+			AccessInventory(c.Inventaire)
 
-		hasPotion := HasItem(c.Inventaire, "Potion")
-		hasPoison := HasItem(c.Inventaire, "Potion de poison")
-
-		if hasPotion {
-			fmt.Println("1. Utiliser une potion de vie")
-		}
-		if hasPoison {
-			fmt.Println("2. Utiliser une potion de poison")
-		}
-		fmt.Println("0. Retour")
-
-		var sub int
-		fmt.Scan(&sub)
-
-		switch sub {
-		case 1:
 			if HasItem(c.Inventaire, "Potion") {
-				TakePot(c)
-				RemoveInventory(c, "Potion")
+				fmt.Println("1. Utiliser une potion de vie")
 			}
-		case 2:
 			if HasItem(c.Inventaire, "Potion de poison") {
-				PoisonPot(c)
-				RemoveInventory(c, "Potion de poison")
+				fmt.Println("2. Utiliser une potion de poison")
 			}
-		case 0:
-			return
-		default:
-			fmt.Println("Choix invalide.")
+			fmt.Println("0. Retour")
+
+			var sub int
+			fmt.Print("> ")
+			fmt.Scan(&sub)
+
+			switch sub {
+			case 1:
+				if HasItem(c.Inventaire, "Potion") {
+					TakePot(c)
+					RemoveInventory(c, "Potion")
+				}
+			case 2:
+				if HasItem(c.Inventaire, "Potion de poison") {
+					RemoveInventory(c, "Potion de poison")
+				}
+			case 0:
+				return
+			default:
+				fmt.Println("Choix invalide.")
+			}
 		}
 	}
+
 }
+
