@@ -51,3 +51,26 @@ func hasItem(inventory []string, item string) bool {
 	}
 	return false
 }
+
+func afficherInventaire(c *Character) {
+	for {
+		fmt.Println("\n--- Inventaire ---")
+		accessInventory(c.Inventaire)
+
+		if hasItem(c.Inventaire, "Potion") {
+			fmt.Println("1. Utiliser une potion de vie")
+		}
+		fmt.Println("2. Retour")
+
+		var sub int
+		fmt.Scan(&sub)
+
+		if sub == 2 {
+			break
+		} else if sub == 1 && hasItem(c.Inventaire, "Potion") {
+			takePot(c)
+		} else {
+			fmt.Println("Choix invalide.")
+		}
+	}
+}
