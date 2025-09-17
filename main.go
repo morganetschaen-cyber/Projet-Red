@@ -1,10 +1,12 @@
 package main
 
+import "projet-red/game"
+
 func main() {
-	if !afficherIntro() {
+	if !game.AfficherIntro() {
 		return
 	}
 
-	heros := characterCreation()
-	afficherMenu(&heros)
+	heros := game.Creation()
+	game.AfficherMenu(&heros)
 }
