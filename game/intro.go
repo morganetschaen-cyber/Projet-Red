@@ -25,6 +25,7 @@ func centerText(text string, width int) string {
 func AfficherIntro() bool {
 	width := 80
 
+	fmt.Println("\033[31m")
 	fmt.Println(centerText("========================================", width))
 	fmt.Println(centerText("   ____  __.                            ", width))
 	fmt.Println(centerText("  |    |/ _|______ ___.__. ____   ____  ", width))
@@ -33,19 +34,25 @@ func AfficherIntro() bool {
 	fmt.Println(centerText("  |____|__ \\|__|   / ____|___|  /___|  /", width))
 	fmt.Println(centerText("          \\/       \\/         \\/     \\/ ", width))
 	fmt.Println(centerText("========================================", width))
+	fmt.Println("\033[0m")
 
 	slowPrint("Bienvenue dans le monde de Krynn...")
 	slowPrint("Êtes-vous prêt à entrer ?")
-	fmt.Println("1. Oui | 2. Non")
 
+	fmt.Println("\033[32m1. Oui\033[0m  |  \033[31m2. Non\033[0m")
 	var choix int
 	fmt.Print("> ")
 	fmt.Scan(&choix)
 
 	if choix == 2 {
+		fmt.Println("\033[33m")
 		slowPrint("Vous tournez le dos aux ténèbres... mais pour combien de temps ?")
+		fmt.Println("\033[0m")
 		return false
 	}
+
+	fmt.Println("\033[36m")
 	slowPrint("...Très bien. Le destin vous attend.")
+	fmt.Println("\033[0m")
 	return true
 }
