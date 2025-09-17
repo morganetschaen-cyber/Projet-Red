@@ -10,8 +10,9 @@ func main() {
 		fmt.Println("1. Afficher les informations du personnage")
 		fmt.Println("2. Accéder à l’inventaire")
 		fmt.Println("3. Marchand")
-		fmt.Println("4. Quitter")
-		fmt.Println("5. Combat d’entraînement")
+		fmt.Println("4. Forgeron")
+		fmt.Println("5. Combat d'entraînement")
+		fmt.Println("6. Quitter")
 
 		var choix int
 		fmt.Print("Votre choix : ")
@@ -27,7 +28,7 @@ func main() {
 				fmt.Println("1. Utiliser une potion")
 				fmt.Println("2. Utiliser une potion de poison")
 				fmt.Println("3. Utiliser une augmentation d’inventaire")
-				fmt.Println("9. Retour")
+				fmt.Println("4. Retour")
 
 				var sub int
 				fmt.Scan(&sub)
