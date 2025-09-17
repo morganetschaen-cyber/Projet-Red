@@ -1,7 +1,7 @@
 package main
 
 func main() {
-	if afficherIntro() {
+	if !afficherIntro() {
 		return
 	}
 
