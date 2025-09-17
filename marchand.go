@@ -59,7 +59,7 @@ func marchand(c *Character) {
 			sellDuplicates(c)
 		case 6:
 			fmt.Println("Vous quittez le magasin.")
-			break
+			return
 
 		default:
 			fmt.Println("Choix invalide.")
