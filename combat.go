@@ -51,6 +51,22 @@ func characterTurn(c *Character, m *Monster) {
 
 func goblinAttack(c *Character, m *Monster) {
 	fmt.Println("\n--- Tour du monstre ---")
+
+	if m.PoisonTour > 0 {
+		damage := 10
+		m.PVActuels -= damage
+		if m.PVActuels < 0 {
+			m.PVActuels = 0
+		}
+		fmt.Printf("💀 Le poison ronge %s ! (-%d PV, reste %d/%d)\n", m.Nom, damage, m.PVActuels, m.PVMax)
+		m.PoisonTour--
+
+		if m.PVActuels == 0 {
+			fmt.Printf("%s succombe au poison...\n", m.Nom)
+			return
+		}
+	}
+
 	c.PVActuels -= m.Attaque
 	if c.PVActuels < 0 {
 		c.PVActuels = 0
@@ -59,6 +75,7 @@ func goblinAttack(c *Character, m *Monster) {
 	fmt.Printf("%s PV: %d/%d\n", c.Nom, c.PVActuels, c.PVMax)
 	isDead(c)
 }
+
 func trainingFight(c *Character, m *Monster) {
 	tour := 1
 	for c.PVActuels > 0 && m.PVActuels > 0 {
