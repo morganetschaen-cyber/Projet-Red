@@ -46,8 +46,7 @@ func main() {
 		case 3:
 			marchand(&heros)
 		case 4:
-			fmt.Println("Au revoir !")
-			return
+			forgeron(&heros)
 		case 5:
 			fmt.Println("Début du combat d’entraînement !")
 			gobelin := initGoblin()
@@ -63,6 +62,9 @@ func main() {
 					break
 				}
 			}
+		case 6:
+			fmt.Println("Au revoir !")
+			return
 		default:
 			fmt.Println("Choix invalide.")
 		}
