@@ -40,7 +40,6 @@ func marchand(c *Character) {
 			if sousMenuMarchand() {
 				return
 			}
-
 		case 2:
 			if c.Argent >= 6 {
 				c.Argent -= 6
