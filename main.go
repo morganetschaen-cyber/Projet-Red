@@ -11,6 +11,7 @@ func main() {
 		fmt.Println("2. Accéder à l’inventaire")
 		fmt.Println("3. Marchand")
 		fmt.Println("4. Quitter")
+		fmt.Println("5. Combat d’entraînement")
 
 		var choix int
 		fmt.Print("Votre choix : ")
@@ -47,6 +48,21 @@ func main() {
 		case 4:
 			fmt.Println("Au revoir !")
 			return
+		case 5:
+			fmt.Println("Début du combat d’entraînement !")
+			gobelin := initGoblin()
+			for gobelin.PVActuels > 0 && heros.PVActuels > 0 {
+				characterTurn(&heros, &gobelin)
+				if gobelin.PVActuels <= 0 {
+					fmt.Println("Le gobelin est vaincu !")
+					break
+				}
+				goblinAttack(&heros, &gobelin)
+				if heros.PVActuels <= 0 {
+					fmt.Println("Vous avez été vaincu !")
+					break
+				}
+			}
 		default:
 			fmt.Println("Choix invalide.")
 		}
