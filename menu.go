@@ -64,9 +64,9 @@ func afficherMenu(heros *Character) {
 				case "Retour":
 					break
 				case "Utiliser une potion de vie":
-					takePot(&heros)
+					takePot(heros)
 				default:
-					equipItem(&heros, action[len("Équiper "):])
+					equipItem(heros, action[len("Équiper "):])
 				}
 
 				if action == "Retour" {
