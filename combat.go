@@ -85,13 +85,10 @@ func trainingFight(c *Character, m *Monster) {
 
 		characterTurn(c, m)
 		if m.PVActuels <= 0 {
-			fmt.Println(m.Nom, "est vaincu !")
-			return
-
-			goldEarned := rand.Intn(50) + 10 // 10-59 злато
+			fmt.Println(m.Nom, "est vaincu ! 🎉")
+			goldEarned := rand.Intn(50) + 10
 			c.Argent += goldEarned
 			fmt.Printf("Vous recevez %d pièces d'or ! 💰\n", goldEarned)
-
 			return
 		}
 
