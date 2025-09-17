@@ -24,7 +24,55 @@ func afficherMenu(heros *Character) {
 			fmt.Scanln()
 
 		case 2:
-			afficherInventaire(heros)
+			for {
+				fmt.Println("\n--- Inventaire ---")
+				accessInventory(heros.Inventaire)
+
+				options := make(map[int]string)
+				optionNum := 1
+
+				if hasItem(heros.Inventaire, "Potion") {
+					options[optionNum] = "Utiliser une potion de vie"
+					optionNum++
+				}
+
+				equipables := []string{"Chapeau de l’aventurier", "Tunique de l’aventurier", "Bottes de l’aventurier"}
+				for _, item := range equipables {
+					if hasItem(heros.Inventaire, item) {
+						options[optionNum] = "Équiper " + item
+						optionNum++
+					}
+				}
+
+				options[optionNum] = "Retour"
+
+				for k, v := range options {
+					fmt.Printf("%d. %s\n", k, v)
+				}
+
+				var sub int
+				fmt.Print("> ")
+				fmt.Scan(&sub)
+
+				action, exists := options[sub]
+				if !exists {
+					fmt.Println("Choix invalide.")
+					continue
+				}
+
+				switch action {
+				case "Retour":
+					break
+				case "Utiliser une potion de vie":
+					takePot(&heros)
+				default:
+					equipItem(&heros, action[len("Équiper "):])
+				}
+
+				if action == "Retour" {
+					break
+				}
+			}
 
 		case 3:
 			marchand(heros)
