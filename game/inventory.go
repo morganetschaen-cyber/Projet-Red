@@ -2,7 +2,6 @@ package game
 
 import (
 	"fmt"
-	"time"
 )
 
 func AccessInventory(inventory []string) {
@@ -56,17 +55,6 @@ func HasItem(inventory []string, item string) bool {
 	return false
 }
 
-func PoisonPot(c *Character) {
-	fmt.Println(c.Nom, "utilise une Potion de poison !")
-	for i := 1; i <= 3; i++ {
-		c.PVActuels -= 10
-		if c.PVActuels < 0 {
-			c.PVActuels = 0
-		}
-		fmt.Printf("Seconde %d : %s a %d/%d PV\n", i, c.Nom, c.PVActuels, c.PVMax)
-		time.Sleep(1 * time.Second)
-	}
-}
 func AfficherInventaire(c *Character) {
 	for {
 		fmt.Println("\n--- Inventaire ---")

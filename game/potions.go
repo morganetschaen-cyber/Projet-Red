@@ -17,3 +17,15 @@ func TakePot(c *Character) {
 	}
 	fmt.Println("Vous n’avez plus de potions !")
 }
+
+func PoisonPot(c *Character, m *Monster) {
+	for i, item := range c.Inventaire {
+		if item == "Potion de poison" {
+			c.Inventaire = append(c.Inventaire[:i], c.Inventaire[i+1:]...)
+			m.PoisonTour = 3
+			fmt.Printf("%s lance une potion de poison sur %s !\n", c.Nom, m.Nom)
+			return
+		}
+	}
+	fmt.Println("Vous n’avez plus de potions de poison !")
+}
