@@ -28,12 +28,12 @@ func characterTurn(c *Character, m *Monster) {
 			accessInventory(c.Inventaire)
 			fmt.Println("1. Utiliser une potion de vie")
 			fmt.Println("2. Lancer une potion de poison sur (l'ennemi)")
-			fmt.Println("9. Retour")
+			fmt.Println("3. Retour")
 
 			var choixInv int
 			fmt.Scan(&choixInv)
 
-			if choixInv == 9 {
+			if choixInv == 3 {
 				break
 			} else if choixInv == 1 {
 				takePot(c)
