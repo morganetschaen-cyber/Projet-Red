@@ -10,12 +10,16 @@ var premierVisite bool = true
 func marchand(c *Character) {
 	for {
 		fmt.Println("\n--- Marchand ---")
-		fmt.Println("1. Potion de vie")
+		fmt.Println("1. Potion de vie (3 оr)")
 		fmt.Println("2. Potion de poison (6 pièces d'or)")
 		fmt.Println("3. Livre de Sort : Boule de Feu (25 pièces d'or)")
-		fmt.Println("4. Extension d'inventaire (20 pièces d'or)")
-		fmt.Println("5. Vendre un objet en double")
-		fmt.Println("6. Retour au menu")
+		fmt.Println("4. Fourrure de Loup (4 or)")
+		fmt.Println("5. Peau de Troll (7 or)")
+		fmt.Println("6. Cuir de Sanglier (3 or)")
+		fmt.Println("7. Plume de Corbeau (1 or)")
+		fmt.Println("8. Extension d'inventaire (20 pièces d'or)")
+		fmt.Println("9. Vendre un objet en double")
+		fmt.Println("0. Retour au menu")
 
 		var choix int
 		fmt.Scan(&choix)
@@ -36,7 +40,6 @@ func marchand(c *Character) {
 			if sousMenuMarchand() {
 				return
 			}
-
 		case 2:
 			if c.Argent >= 6 {
 				c.Argent -= 6
@@ -63,6 +66,53 @@ func marchand(c *Character) {
 			}
 
 		case 4:
+			if c.Argent >= 4 {
+				c.Argent -= 4
+				addInventory(c, "Fourrure de Loup")
+			} else {
+				fmt.Println("Pas assez d'or.")
+			}
+			fmt.Println("Argent actuel :", c.Argent)
+			if sousMenuMarchand() {
+				return
+			}
+
+		case 5:
+			if c.Argent >= 7 {
+				c.Argent -= 7
+				addInventory(c, "Peau de Troll")
+			} else {
+				fmt.Println("Pas assez d'or.")
+			}
+			fmt.Println("Argent actuel :", c.Argent)
+			if sousMenuMarchand() {
+				return
+			}
+
+		case 6:
+			if c.Argent >= 3 {
+				c.Argent -= 3
+				addInventory(c, "Cuir de Sanglier")
+			} else {
+				fmt.Println("Pas assez d'or.")
+			}
+			fmt.Println("Argent actuel :", c.Argent)
+			if sousMenuMarchand() {
+				return
+			}
+
+		case 7:
+			if c.Argent >= 1 {
+				c.Argent -= 1
+				addInventory(c, "Plume de Corbeau")
+			} else {
+				fmt.Println("Pas assez d'or.")
+			}
+			fmt.Println("Argent actuel :", c.Argent)
+			if sousMenuMarchand() {
+				return
+			}
+		case 8:
 			if c.Argent >= 20 {
 				c.Argent -= 20
 				c.CapaciteInventaire += 5
@@ -75,14 +125,14 @@ func marchand(c *Character) {
 				return
 			}
 
-		case 5:
+		case 9:
 			sellDuplicates(c)
 			fmt.Println("Argent actuel :", c.Argent)
 			if sousMenuMarchand() {
 				return
 			}
 
-		case 6:
+		case 0:
 			fmt.Println("Vous quittez le magasin.")
 			return
 

@@ -24,7 +24,6 @@ func addInventory(c *Character, item string) {
 		fmt.Println(item, "a été ajouté à votre inventaire !")
 	}
 }
-
 func removeInventory(c *Character, item string) {
 	for i, v := range c.Inventaire {
 		if v == item {
