@@ -30,7 +30,10 @@ func main() {
 			for {
 				fmt.Println("\n--- Inventaire ---")
 				accessInventory(heros.Inventaire)
-				fmt.Println("1. Utiliser une potion de vie")
+
+				if hasItem(heros.Inventaire, "Potion") {
+					fmt.Println("1. Utiliser une potion de vie")
+				}
 				fmt.Println("2. Retour")
 
 				var sub int
@@ -38,7 +41,7 @@ func main() {
 
 				if sub == 2 {
 					break
-				} else if sub == 1 {
+				} else if sub == 1 && hasItem(heros.Inventaire, "Potion") {
 					takePot(&heros)
 				} else {
 					fmt.Println("Choix invalide.")
