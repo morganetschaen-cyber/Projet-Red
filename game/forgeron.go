@@ -8,7 +8,7 @@ func Forgeron(c *Character) {
 		fmt.Println("1. Chapeau de l’aventurier")
 		fmt.Println("2. Tunique de l’aventurier")
 		fmt.Println("3. Bottes de l’aventurier")
-		fmt.Println("4. Retour")
+		fmt.Println("0. Retour")
 
 		var choix int
 		fmt.Scan(&choix)

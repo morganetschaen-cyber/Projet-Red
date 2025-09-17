@@ -146,8 +146,8 @@ func Marchand(c *Character) {
 
 func sousMenuMarchand() bool {
 	for {
-		fmt.Println("\n1. Retour au marchand")
-		fmt.Println("2. Quitter le marchand")
+		fmt.Println("\n0. Retour au marchand")
+		fmt.Println("1. Quitter le marchand")
 
 		var choix int
 		fmt.Scan(&choix)

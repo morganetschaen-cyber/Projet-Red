@@ -61,7 +61,7 @@ func AfficherInventaire(c *Character) {
 		if HasItem(c.Inventaire, "Potion") {
 			fmt.Println("1. Utiliser une potion de vie")
 		}
-		fmt.Println("2. Retour")
+		fmt.Println("0. Retour")
 
 		var sub int
 		fmt.Scan(&sub)
