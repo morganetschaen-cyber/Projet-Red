@@ -56,14 +56,6 @@ func HasItem(inventory []string, item string) bool {
 	return false
 }
 
-func TakePot(c *Character) {
-	fmt.Println(c.Nom, "utilise une Potion de vie !")
-	c.PVActuels += 50
-	if c.PVActuels > c.PVMax {
-		c.PVActuels = c.PVMax
-	}
-	fmt.Printf("PV : %d/%d\n", c.PVActuels, c.PVMax)
-}
 
 func PoisonPot(c *Character) {
 	fmt.Println(c.Nom, "utilise une Potion de poison !")
@@ -76,8 +68,6 @@ func PoisonPot(c *Character) {
 		time.Sleep(1 * time.Second)
 	}
 }
-
-func AfficherInventaire(c *Character) {
 	func AfficherInventaire(c *Character) {
 		for {
 			fmt.Println("\n--- Inventaire ---")
@@ -99,7 +89,6 @@ func AfficherInventaire(c *Character) {
 			case 1:
 				if HasItem(c.Inventaire, "Potion") {
 					TakePot(c)
-					RemoveInventory(c, "Potion")
 				}
 			case 2:
 				if HasItem(c.Inventaire, "Potion de poison") {
