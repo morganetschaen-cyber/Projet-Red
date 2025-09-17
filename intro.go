@@ -3,7 +3,8 @@ package main
 import "fmt"
 
 func afficherIntro() bool {
-	fmt.Println("\033[31m"
+	fmt.Println("\033[31m")
+	fmt.Println("+--------------------------------------------------+")
 	fmt.Println("!     ____  __.                            ")
 	fmt.Println("!    |    |/ _|______ ___.__. ____   ____  ")
 	fmt.Println("!    |      < \\_  __ <   |  |/    \\ /    \\ ")
@@ -11,5 +12,6 @@ func afficherIntro() bool {
 	fmt.Println("!    |____|__ \\|__|   / ____|___|  /___|  /")
 	fmt.Println("!            \\/       \\/         \\/     \\/ ")
 	fmt.Println("\033[0m")
+	fmt.Println("+--------------------------------------------------+")
 	return true
 }
