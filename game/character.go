@@ -80,7 +80,7 @@ func Creation() Character {
 				Classe:             classe,
 				Niveau:             1,
 				PVMax:              pvMax,
-				PVActuels:          pvMax,
+				PVActuels:          pvMax / 2,
 				Inventaire:         []string{},
 				Skill:              []string{"Coup de poing"},
 				Argent:             100,
