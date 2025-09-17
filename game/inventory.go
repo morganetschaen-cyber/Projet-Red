@@ -78,10 +78,10 @@ func AfficherInventaire(c *Character) {
 		}
 		if HasItem(c.Inventaire, "Potion de poison") {
 			fmt.Println("2. Utiliser une potion de poison")
-		fmt.Println("0. Retour")
+			fmt.Println("0. Retour")
 
-		var sub int
-		fmt.Scan(&sub)
+			var sub int
+			fmt.Scan(&sub)
 
 			switch sub {
 			case 1:
@@ -99,5 +99,6 @@ func AfficherInventaire(c *Character) {
 			default:
 				fmt.Println("Choix invalide.")
 			}
+		}
 	}
 }
