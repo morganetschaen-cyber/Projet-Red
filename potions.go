@@ -1,18 +1,35 @@
 package main
 
-import (
-	"fmt"
-	"time"
-)
+import "fmt"
 
-func poisonPot(c *Character) {
-	for i := 1; i <= 3; i++ {
-		c.PVActuels -= 10
-		if c.PVActuels < 0 {
-			c.PVActuels = 0
+func takePot(c *Character) {
+	for i, item := range c.Inventaire {
+		if item == "Potion" {
+
+			c.Inventaire = append(c.Inventaire[:i], c.Inventaire[i+1:]...)
+
+			heal := 20
+			c.PVActuels += heal
+			if c.PVActuels > c.PVMax {
+				c.PVActuels = c.PVMax
+			}
+			fmt.Printf("Vous buvez une potion (+%d PV). PV : %d/%d\n", heal, c.PVActuels, c.PVMax)
+			return
 		}
-		fmt.Printf("Poison! PV actuels: %d/%d\n", c.PVActuels, c.PVMax)
-		time.Sleep(1 * time.Second)
 	}
-	isDead(c)
+	fmt.Println("Vous n’avez plus de potions !")
+}
+
+func poisonPot(c *Character, m *Monster) {
+	for i, item := range c.Inventaire {
+		if item == "Potion de poison" {
+
+			c.Inventaire = append(c.Inventaire[:i], c.Inventaire[i+1:]...)
+
+			m.PoisonTour = 3
+			fmt.Printf("Vous lancez une potion de poison sur %s !\n", m.Nom)
+			return
+		}
+	}
+	fmt.Println("Vous n’avez plus de potions de poison !")
 }

@@ -18,26 +18,6 @@ func accessInventory(inventory []string) {
 	}
 }
 
-func takePot(c *Character) {
-	found := false
-	for i, item := range c.Inventaire {
-		if item == "Potion" {
-			c.Inventaire = append(c.Inventaire[:i], c.Inventaire[i+1:]...)
-			c.PVActuels += 50
-			if c.PVActuels > c.PVMax {
-				c.PVActuels = c.PVMax
-			}
-			fmt.Println("Vous utilisez une potion de soin !")
-			fmt.Printf("PV : %d/%d\n", c.PVActuels, c.PVMax)
-			found = true
-			break
-		}
-	}
-	if !found {
-		fmt.Println("Vous n’avez plus de potions !")
-	}
-}
-
 func addInventory(c *Character, item string) {
 	if canAddItem(c) {
 		c.Inventaire = append(c.Inventaire, item)
