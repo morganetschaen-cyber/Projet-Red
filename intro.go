@@ -3,7 +3,16 @@ package main
 import (
 	"fmt"
 	"strings"
+	"time"
 )
+
+func slowPrint(s string) {
+	for _, c := range s {
+		fmt.Printf("%c", c)
+		time.Sleep(40 * time.Millisecond)
+	}
+	fmt.Println()
+}
 
 func centerText(text string, width int) string {
 	if len(text) >= width {
@@ -15,6 +24,7 @@ func centerText(text string, width int) string {
 
 func afficherIntro() bool {
 	width := 80
+
 	fmt.Println("\033[31m")
 	fmt.Println(centerText("+--------------------------------------------------+", width))
 	fmt.Println(centerText("!     ____  __.                            ", width))
@@ -25,21 +35,20 @@ func afficherIntro() bool {
 	fmt.Println(centerText("!            \\/       \\/         \\/     \\/ ", width))
 	fmt.Println(centerText("+--------------------------------------------------+", width))
 	fmt.Println("\033[0m")
-	return true
 
-	fmt.Println("Bienvenue dans le monde de Krynn...")
-	fmt.Println("Êtes-vous prêt à entrer ?")
-	fmt.Println("1. Oui  |  2. Non")
+	slowPrint("Bienvenue dans le monde de Krynn...")
+	slowPrint("Êtes-vous prêt à entrer ?")
 
+	fmt.Println("\033[32m1. Oui\033[0m  |  \033[31m2. Non\033[0m")
 	var choix int
 	fmt.Print("> ")
 	fmt.Scan(&choix)
 
 	if choix == 2 {
-		fmt.Println("Vous tournez le dos aux ténèbres... mais pour combien de temps ?")
+		slowPrint("Vous tournez le dos aux ténèbres... mais pour combien de temps ?")
 		return false
 	}
 
-	fmt.Println("...Très bien. Le destin vous attend.")
+	slowPrint("...Très bien. Le destin vous attend.")
 	return true
 }

@@ -32,6 +32,7 @@ func initCharacter(nom, classe string, niveau, pvMax, pvActuels int, inventaire 
 }
 
 func characterCreation() Character {
+	fmt.Println("Début de la création de personnage")
 	var nom string
 	var classe string
 
