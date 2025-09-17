@@ -18,52 +18,76 @@ type Character struct {
 	CapaciteInventaire int
 }
 
-func Creation() Character {
-	var nom string
-	var choixClasse int
-	var classe string
-	var pvMax int
+func center(text string, width int) string {
+	if len(text) >= width {
+		return text
+	}
+	spaces := (width - len(text)) / 2
+	return strings.Repeat(" ", spaces) + text
+}
 
-	fmt.Println("Choisissez le nom de votre personnage :")
+func Creation() Character {
+	width := 50
+	fmt.Println(center("+-----------------------------+", width))
+	fmt.Println(center("|     CRÉATION DU VOYAGEUR    |", width))
+	fmt.Println(center("+-----------------------------+", width))
+
+	var nom string
+	fmt.Println("\nEntrez le nom du voyageur :")
+	fmt.Print("> ")
 	fmt.Scan(&nom)
+
 	if len(nom) > 0 {
 		nom = strings.ToUpper(nom[:1]) + strings.ToLower(nom[1:])
 	}
 
-	fmt.Println("Choisissez votre classe :")
-	fmt.Println("1. Humain (PV 100)")
-	fmt.Println("2. Elfe (PV 80)")
-	fmt.Println("3. Nain (PV 120)")
-	fmt.Print("> ")
-	fmt.Scan(&choixClasse)
+	for {
+		fmt.Println("\nChoisis ton chemin :")
+		fmt.Println("1. Assassin      → Rapide, précis, impitoyable")
+		fmt.Println("2. Écorcheur     → Sauvage, brutal, sanguinaire")
+		fmt.Println("3. Nécromancien  → Sombre, mystique, impie")
+		fmt.Print("> ")
 
-	switch choixClasse {
-	case 1:
-		classe = "Humain"
-		pvMax = 100
-	case 2:
-		classe = "Elfe"
-		pvMax = 80
-	case 3:
-		classe = "Nain"
-		pvMax = 120
-	default:
-		fmt.Println("Choix invalide, vous serez Humain par défaut.")
-		classe = "Humain"
-		pvMax = 100
-	}
+		var choix int
+		fmt.Scan(&choix)
 
-	return Character{
-		Nom:                nom,
-		Classe:             classe,
-		Niveau:             1,
-		PVMax:              pvMax,
-		PVActuels:          pvMax / 2,
-		Inventaire:         []string{},
-		Skill:              []string{"Coup de poing"},
-		Argent:             100,
-		Equipment:          Equipment{},
-		CapaciteInventaire: 10,
+		var classe string
+		var pvMax int
+
+		switch choix {
+		case 1:
+			classe, pvMax = "Assassin", 90
+		case 2:
+			classe, pvMax = "Écorcheur", 110
+		case 3:
+			classe, pvMax = "Nécromancien", 80
+		default:
+			fmt.Println("Choix invalide.")
+			continue
+		}
+
+		fmt.Printf("\nTu as choisi : %s\n", classe)
+		fmt.Println("Es-tu sûr ? (1. Oui | 2. Non)")
+		fmt.Print("> ")
+
+		var confirm int
+		fmt.Scan(&confirm)
+
+		if confirm == 1 {
+			fmt.Printf("\033[31mTon sang s’unit à celui des %ss\033[0m\n", classe)
+			return Character{
+				Nom:                nom,
+				Classe:             classe,
+				Niveau:             1,
+				PVMax:              pvMax,
+				PVActuels:          pvMax,
+				Inventaire:         []string{},
+				Skill:              []string{"Coup de poing"},
+				Argent:             100,
+				Equipment:          Equipment{},
+				CapaciteInventaire: 10,
+			}
+		}
 	}
 }
 
