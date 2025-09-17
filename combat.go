@@ -77,7 +77,6 @@ func goblinAttack(c *Character, m *Monster) {
 	fmt.Printf("%s PV: %d/%d\n", c.Nom, c.PVActuels, c.PVMax)
 	isDead(c)
 }
-
 func trainingFight(c *Character, m *Monster) {
 	tour := 1
 	for c.PVActuels > 0 && m.PVActuels > 0 {
