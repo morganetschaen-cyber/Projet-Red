@@ -10,7 +10,7 @@ func AfficherMenu(heros *Character) {
 		fmt.Println("3. Marchand")
 		fmt.Println("4. Forgeron")
 		fmt.Println("5. Combat d’entraînement")
-		fmt.Println("6. Quitter")
+		fmt.Println("0. Quitter")
 
 		var choix int
 		fmt.Print("> ")

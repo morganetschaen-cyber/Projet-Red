@@ -10,6 +10,8 @@ var premierVisite bool = true
 func Marchand(c *Character) {
 	for {
 		fmt.Println("\n--- Marchand ---")
+		fmt.Println(" Argent actuel :", c.Argent)
+
 		fmt.Println("1. Potion de vie (3 оr)")
 		fmt.Println("2. Potion de poison (6 pièces d'or)")
 		fmt.Println("3. Livre de Sort : Boule de Feu (25 pièces d'or)")
@@ -144,8 +146,8 @@ func Marchand(c *Character) {
 
 func sousMenuMarchand() bool {
 	for {
-		fmt.Println("\n1. Retour au marchand")
-		fmt.Println("2. Quitter le marchand")
+		fmt.Println("\n0. Retour au marchand")
+		fmt.Println("1. Quitter le marchand")
 
 		var choix int
 		fmt.Scan(&choix)

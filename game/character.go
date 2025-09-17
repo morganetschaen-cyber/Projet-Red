@@ -19,7 +19,10 @@ type Character struct {
 }
 
 func Creation() Character {
-	var nom, classe string
+	var nom string
+	var choixClasse int
+	var classe string
+	var pvMax int
 
 	fmt.Println("Choisissez le nom de votre personnage :")
 	fmt.Scan(&nom)
@@ -27,19 +30,25 @@ func Creation() Character {
 		nom = strings.ToUpper(nom[:1]) + strings.ToLower(nom[1:])
 	}
 
-	fmt.Println("Choisissez votre classe (Humain / Elfe / Nain) :")
-	fmt.Scan(&classe)
+	fmt.Println("Choisissez votre classe :")
+	fmt.Println("1. Humain (PV 100)")
+	fmt.Println("2. Elfe (PV 80)")
+	fmt.Println("3. Nain (PV 120)")
+	fmt.Print("> ")
+	fmt.Scan(&choixClasse)
 
-	pvMax := 100
-	switch strings.ToLower(classe) {
-	case "elfe":
-		pvMax = 80
-	case "nain":
-		pvMax = 120
-	case "humain":
+	switch choixClasse {
+	case 1:
+		classe = "Humain"
 		pvMax = 100
+	case 2:
+		classe = "Elfe"
+		pvMax = 80
+	case 3:
+		classe = "Nain"
+		pvMax = 120
 	default:
-		fmt.Println("Classe invalide, vous serez Humain par défaut.")
+		fmt.Println("Choix invalide, vous serez Humain par défaut.")
 		classe = "Humain"
 		pvMax = 100
 	}

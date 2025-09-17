@@ -5,12 +5,13 @@ import "fmt"
 func Forgeron(c *Character) {
 	for {
 		fmt.Println("\n--- Forgeron ---")
-		fmt.Println("1. Chapeau de l’aventurier")
-		fmt.Println("2. Tunique de l’aventurier")
-		fmt.Println("3. Bottes de l’aventurier")
-		fmt.Println("4. Retour")
+		fmt.Println("1. Chapeau de l’aventurier (Plume de Corbeau, Cuir de Sanglier)")
+		fmt.Println("2. Tunique de l’aventurier (Fourrure de Loup, Fourrure de Loup, Peau de Troll)")
+		fmt.Println("3. Bottes de l’aventurier (Fourrure de Loup, Cuir de Sanglier)")
+		fmt.Println("0. Retour")
 
 		var choix int
+		fmt.Print("> ")
 		fmt.Scan(&choix)
 
 		switch choix {
@@ -29,12 +30,11 @@ func Forgeron(c *Character) {
 				[]string{"Fourrure de Loup", "Cuir de Sanglier"}, 5) {
 				fmt.Println("Vous avez fabriqué des Bottes de l’aventurier !")
 			}
-		case 4:
+		case 0:
 			return
 		default:
 			fmt.Println("Choix invalide.")
 		}
-
 	}
 }
 
@@ -43,16 +43,20 @@ func craftItem(c *Character, item string, ressources []string, prix int) bool {
 		fmt.Println("Pas assez d’or.")
 		return false
 	}
+
 	for _, r := range ressources {
 		if !HasItem(c.Inventaire, r) {
 			fmt.Println("Ressource manquante :", r)
 			return false
 		}
 	}
+
 	for _, r := range ressources {
 		RemoveInventory(c, r)
 	}
+
 	c.Argent -= prix
 	AddInventory(c, item)
+
 	return true
 }
