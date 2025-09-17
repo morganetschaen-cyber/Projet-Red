@@ -98,5 +98,6 @@ func AfficherInventaire(c *Character) {
 				return
 			default:
 				fmt.Println("Choix invalide.")
+			}
 	}
 }
