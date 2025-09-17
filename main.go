@@ -25,21 +25,16 @@ func main() {
 			for {
 				fmt.Println("\n--- Inventaire ---")
 				accessInventory(heros.Inventaire)
-				fmt.Println("1. Utiliser une potion")
-				fmt.Println("2. Utiliser une potion de poison")
-				fmt.Println("3. Utiliser une augmentation d’inventaire")
-				fmt.Println("4. Retour")
+				fmt.Println("1. Utiliser une potion de vie")
+				fmt.Println("2. Retour")
 
 				var sub int
 				fmt.Scan(&sub)
 
-				if sub == 9 {
+				if sub == 2 {
 					break
 				} else if sub == 1 {
 					takePot(&heros)
-				} else if sub == 2 {
-					poisonPot(&heros)
-					removeInventory(&heros, "Potion de poison")
 				} else {
 					fmt.Println("Choix invalide.")
 				}

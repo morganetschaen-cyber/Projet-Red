@@ -27,7 +27,7 @@ func characterTurn(c *Character, m *Monster) {
 			fmt.Println("\n--- Inventaire ---")
 			accessInventory(c.Inventaire)
 			fmt.Println("1. Utiliser une potion de vie")
-			fmt.Println("2. Utiliser une potion de poison (sur vous)")
+			fmt.Println("2. Lancer une potion de poison sur (l'ennemi)")
 			fmt.Println("9. Retour")
 
 			var choixInv int
@@ -39,8 +39,7 @@ func characterTurn(c *Character, m *Monster) {
 				takePot(c)
 				break
 			} else if choixInv == 2 {
-				poisonPot(c)
-				removeInventory(c, "Potion de poison")
+				poisonPot(c, m)
 				break
 			} else {
 				fmt.Println("Choix invalide.")
