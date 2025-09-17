@@ -10,18 +10,24 @@ var premierVisite bool = true
 func Marchand(c *Character) {
 	for {
 		fmt.Println("\n--- Marchand ---")
-		fmt.Println(" Argent actuel :", c.Argent)
 
-		fmt.Println("1. Potion de vie (3 оr)")
-		fmt.Println("2. Potion de poison (6 pièces d'or)")
-		fmt.Println("3. Livre de Sort : Boule de Feu (25 pièces d'or)")
+		if premierVisite {
+			fmt.Println("1. Potion de vie (GRATUITE pour votre première visite)")
+		} else {
+			fmt.Println("1. Potion de vie (3 or)")
+		}
+
+		fmt.Println("2. Potion de poison (6 or)")
+		fmt.Println("3. Livre de Sort : Boule de Feu (25 or)")
 		fmt.Println("4. Fourrure de Loup (4 or)")
 		fmt.Println("5. Peau de Troll (7 or)")
 		fmt.Println("6. Cuir de Sanglier (3 or)")
 		fmt.Println("7. Plume de Corbeau (1 or)")
-		fmt.Println("8. Extension d'inventaire (20 pièces d'or)")
+		fmt.Println("8. Extension d'inventaire (20 or)")
 		fmt.Println("9. Vendre un objet en double")
 		fmt.Println("0. Retour au menu")
+
+		fmt.Println("💰 Argent actuel :", c.Argent)
 
 		var choix int
 		fmt.Scan(&choix)
