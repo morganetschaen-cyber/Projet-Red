@@ -32,6 +32,11 @@ func marchand(c *Character) {
 			} else {
 				fmt.Println("Pas assez d'argent !")
 			}
+			fmt.Println("Argent actuel :", c.Argent)
+			if sousMenuMarchand() {
+				return
+			}
+
 		case 2:
 			if c.Argent >= 6 {
 				c.Argent -= 6
@@ -39,6 +44,11 @@ func marchand(c *Character) {
 			} else {
 				fmt.Println("Pas assez d'argent !")
 			}
+			fmt.Println("Argent actuel :", c.Argent)
+			if sousMenuMarchand() {
+				return
+			}
+
 		case 3:
 			if c.Argent >= 25 {
 				c.Argent -= 25
@@ -47,6 +57,11 @@ func marchand(c *Character) {
 			} else {
 				fmt.Println("Pas assez d'argent !")
 			}
+			fmt.Println("Argent actuel :", c.Argent)
+			if sousMenuMarchand() {
+				return
+			}
+
 		case 4:
 			if c.Argent >= 20 {
 				c.Argent -= 20
@@ -55,8 +70,18 @@ func marchand(c *Character) {
 			} else {
 				fmt.Println("Pas assez d'or.")
 			}
+			fmt.Println("Argent actuel :", c.Argent)
+			if sousMenuMarchand() {
+				return
+			}
+
 		case 5:
 			sellDuplicates(c)
+			fmt.Println("Argent actuel :", c.Argent)
+			if sousMenuMarchand() {
+				return
+			}
+
 		case 6:
 			fmt.Println("Vous quittez le magasin.")
 			return
@@ -64,9 +89,28 @@ func marchand(c *Character) {
 		default:
 			fmt.Println("Choix invalide.")
 		}
-		fmt.Println("Argent actuel :", c.Argent)
 	}
 }
+
+func sousMenuMarchand() bool {
+	for {
+		fmt.Println("\n1. Retour au marchand")
+		fmt.Println("2. Quitter le marchand")
+
+		var choix int
+		fmt.Scan(&choix)
+
+		if choix == 1 {
+			return false
+		} else if choix == 2 {
+			fmt.Println("Vous quittez le magasin.")
+			return true
+		} else {
+			fmt.Println("Choix invalide.")
+		}
+	}
+}
+
 func sellDuplicates(c *Character) {
 	counts := make(map[string]int)
 	for _, item := range c.Inventaire {
