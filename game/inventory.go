@@ -39,7 +39,7 @@ func RemoveInventory(c *Character, item string) {
 }
 
 func CanAddItem(c *Character) bool {
-	if len(c.Inventaire) >= c.CapaciteInventaire {
+	if len(c.Inventaire) >= c.CapaciteInventory {
 		fmt.Println("Inventaire plein! Vous ne pouvez pas ajouter cet item.")
 		return false
 	}

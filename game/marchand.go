@@ -123,7 +123,7 @@ func Marchand(c *Character) {
 		case 8:
 			if c.Argent >= 20 {
 				c.Argent -= 20
-				c.CapaciteInventaire += 5
+				c.CapaciteInventory += 5
 				fmt.Println("Votre inventaire peut contenir 5 objets de plus !")
 			} else {
 				fmt.Println("Pas assez d'or.")
