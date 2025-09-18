@@ -26,8 +26,27 @@ func AfficherMenu(heros *Character) {
 		case 4:
 			Forgeron(heros)
 		case 5:
-			gobelin := InitGoblin()
-			TrainingFight(heros, &gobelin)
+			fmt.Println("\nChoisissez votre adversaire :")
+			fmt.Println("1. Gobelin")
+			fmt.Println("2. Troll")
+			fmt.Println("3. Dragon")
+			var choixMonstre int
+			fmt.Print("> ")
+			fmt.Scan(&choixMonstre)
+
+			var monstre Monster
+			switch choixMonstre {
+			case 1:
+				monstre = InitGoblin()
+			case 2:
+				monstre = InitTroll()
+			case 3:
+				monstre = InitDragon()
+			default:
+				fmt.Println("Choix invalide.")
+				continue
+			}
+			TrainingFight(heros, &monstre)
 		case 6:
 			fmt.Println("Au revoir !")
 			return

@@ -32,17 +32,6 @@ func CharacterTurn(c *Character, m *Monster) {
 	}
 }
 
-func GoblinAttack(c *Character, m *Monster) {
-	fmt.Println("\n--- Tour du monstre ---")
-	c.PVActuels -= m.Attaque
-	if c.PVActuels < 0 {
-		c.PVActuels = 0
-	}
-	fmt.Printf("%s attaque %s et inflige %d dégâts.\n", m.Nom, c.Nom, m.Attaque)
-	fmt.Printf("PV %s : %d/%d\n", c.Nom, c.PVActuels, c.PVMax)
-	IsDead(c)
-}
-
 func TrainingFight(c *Character, m *Monster) {
 	fmt.Println("⚔️  Le combat commence ! ⚔️")
 	fmt.Printf("%s PV: %d/%d\n", c.Nom, c.PVActuels, c.PVMax)
@@ -61,7 +50,8 @@ func TrainingFight(c *Character, m *Monster) {
 			return
 		}
 
-		GoblinAttack(c, m)
+		fmt.Println("\n--- Tour du monstre ---")
+		MonsterPattern(m, c, tour)
 		if IsDead(c) {
 			return
 		}
