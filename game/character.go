@@ -6,16 +6,16 @@ import (
 )
 
 type Character struct {
-	Nom                string
-	Classe             string
-	Niveau             int
-	PVMax              int
-	PVActuels          int
-	Inventaire         []string
-	Skill              []string
-	Argent             int
-	Equipment          Equipment
-	CapaciteInventaire int
+	Nom               string
+	Classe            string
+	Niveau            int
+	PVMax             int
+	PVActuels         int
+	Inventaire        []string
+	Skill             []string
+	Argent            int
+	Equipment         Equipment
+	CapaciteInventory int
 }
 
 func center(text string, width int) string {
