@@ -55,11 +55,37 @@ func HasItem(inventory []string, item string) bool {
 	}
 	return false
 }
-
 func AfficherInventaire(c *Character) {
 	for {
-		fmt.Println("\n--- Inventaire ---")
-		AccessInventory(c.Inventaire)
+		width := 40
+		borderTop := "╔" + strings.Repeat("═", width-2) + "╗"
+		borderMid := "╠" + strings.Repeat("═", width-2) + "╣"
+		borderBottom := "╚" + strings.Repeat("═", width-2) + "╝"
+
+		fmt.Println(borderTop)
+		title := "INVENTAIRE"
+		fmt.Printf("║ %-36s ║\n", centerString(title, 36))
+		fmt.Println(borderMid)
+
+		if len(c.Inventaire) == 0 {
+			fmt.Printf("║ %-36s ║\n", centerString("Inventaire vide", 36))
+		} else {
+			counts := make(map[string]int)
+			for _, item := range c.Inventaire {
+				counts[item]++
+			}
+			i := 1
+			for item, qty := range counts {
+				line := fmt.Sprintf("[%d] %-22s x%d", i, item, qty)
+				fmt.Printf("║ %-36s ║\n", line)
+				i++
+			}
+		}
+
+		fmt.Println(borderMid)
+		goldLine := fmt.Sprintf("Argent : %d", c.Argent)
+		fmt.Printf("║ %-36s ║\n", goldLine)
+		fmt.Println(borderBottom)
 
 		if HasItem(c.Inventaire, "Potion") {
 			fmt.Println("1. Utiliser une potion de vie")
@@ -90,34 +116,10 @@ func AfficherInventaire(c *Character) {
 	}
 }
 
-func ShowInventory(c *Character) {
-	width := 40
-	borderTop := "╔" + strings.Repeat("═", width-2) + "╗"
-	borderMid := "╠" + strings.Repeat("═", width-2) + "╣"
-	borderBottom := "╚" + strings.Repeat("═", width-2) + "╝"
-
-	fmt.Println(borderTop)
-	title := "INVENTAIRE"
-	fmt.Printf("║ %-36s ║\n", centerText(title, 36))
-	fmt.Println(borderMid)
-
-	if len(c.Inventaire) == 0 {
-		fmt.Printf("║ %-36s ║\n", centerText("Inventaire vide", 36))
-	} else {
-		counts := make(map[string]int)
-		for _, item := range c.Inventaire {
-			counts[item]++
-		}
-		i := 1
-		for item, qty := range counts {
-			line := fmt.Sprintf("[%d]  %-22s x%d", i, item, qty)
-			fmt.Printf("║ %-36s ║\n", line)
-			i++
-		}
+func centerString(s string, width int) string {
+	if len(s) >= width {
+		return s
 	}
-
-	fmt.Println(borderMid)
-	goldLine := fmt.Sprintf("Argent : %d", c.Argent)
-	fmt.Printf("║ %-36s ║\n", goldLine)
-	fmt.Println(borderBottom)
+	spaces := (width - len(s)) / 2
+	return strings.Repeat(" ", spaces) + s
 }
