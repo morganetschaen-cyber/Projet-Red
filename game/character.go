@@ -121,7 +121,31 @@ func SpellBook(c *Character) {
 }
 
 func RecalculerPVMax(c *Character) {
-	c.PVMax = 90 + (c.Niveau-1)*10
+	var basePV int
+	switch strings.ToLower(c.Classe) {
+	case "assassin":
+		basePV = 90
+	case "écorcheur":
+		basePV = 110
+	case "nécromancien":
+		basePV = 80
+	default:
+		basePV = 100
+	}
+	basePV += (c.Niveau - 1) * 10
+
+	// Бонуси от екипировка
+	if c.Equipment.Tete == "Chapeau de l’aventurier" {
+		basePV += 10
+	}
+	if c.Equipment.Torse == "Tunique de l’aventurier" {
+		basePV += 25
+	}
+	if c.Equipment.Pieds == "Bottes de l’aventurier" {
+		basePV += 15
+	}
+
+	c.PVMax = basePV
 	if c.PVActuels > c.PVMax {
 		c.PVActuels = c.PVMax
 	}

@@ -10,7 +10,7 @@ type Equipment struct {
 
 func EquipItem(c *Character, item string) {
 	found := false
-	for _, v := range c.Inventory {
+	for _, v := range c.Inventaire {
 		if v == item {
 			found = true
 			break
@@ -24,19 +24,19 @@ func EquipItem(c *Character, item string) {
 	switch item {
 	case "Chapeau de l’aventurier":
 		if c.Equipment.Tete != "" {
-			AddInventory(c, c.Equipment.Tete)
+			c.Inventaire = append(c.Inventaire, c.Equipment.Tete)
 		}
 		c.Equipment.Tete = item
 		c.PVMax += 10
 	case "Tunique de l’aventurier":
 		if c.Equipment.Torse != "" {
-			AddInventory(c, c.Equipment.Torse)
+			c.Inventaire = append(c.Inventaire, c.Equipment.Torse)
 		}
 		c.Equipment.Torse = item
 		c.PVMax += 25
 	case "Bottes de l’aventurier":
 		if c.Equipment.Pieds != "" {
-			AddInventory(c, c.Equipment.Pieds)
+			c.Inventaire = append(c.Inventaire, c.Equipment.Pieds)
 		}
 		c.Equipment.Pieds = item
 		c.PVMax += 15
