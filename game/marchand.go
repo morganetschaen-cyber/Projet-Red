@@ -158,9 +158,9 @@ func sousMenuMarchand() bool {
 		var choix int
 		fmt.Scan(&choix)
 
-		if choix == 1 {
+		if choix == 0 {
 			return false
-		} else if choix == 2 {
+		} else if choix == 1 {
 			fmt.Println("Vous quittez le magasin.")
 			return true
 		} else {
