@@ -9,6 +9,18 @@ type Equipment struct {
 }
 
 func EquipItem(c *Character, item string) {
+	found := false
+	for _, v := range c.Inventory {
+		if v == item {
+			found = true
+			break
+		}
+	}
+	if !found {
+		fmt.Println("Vous n'avez pas cet objet dans votre inventaire.")
+		return
+	}
+
 	switch item {
 	case "Chapeau de l’aventurier":
 		if c.Equipment.Tete != "" {
@@ -34,6 +46,8 @@ func EquipItem(c *Character, item string) {
 	}
 
 	RemoveInventory(c, item)
+	RecalculerPVMax(c)
+
 	fmt.Println(item, "équipé avec succès !")
 	fmt.Printf("PV Max: %d\n", c.PVMax)
 }
