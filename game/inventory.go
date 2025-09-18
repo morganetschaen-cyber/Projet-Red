@@ -2,6 +2,7 @@ package game
 
 import (
 	"fmt"
+	"strings"
 )
 
 func AccessInventory(inventory []string) {
@@ -87,4 +88,36 @@ func AfficherInventaire(c *Character) {
 			fmt.Println("Choix invalide.")
 		}
 	}
+}
+
+func ShowInventory(c *Character) {
+	width := 40
+	borderTop := "╔" + strings.Repeat("═", width-2) + "╗"
+	borderMid := "╠" + strings.Repeat("═", width-2) + "╣"
+	borderBottom := "╚" + strings.Repeat("═", width-2) + "╝"
+
+	fmt.Println(borderTop)
+	title := "INVENTAIRE"
+	fmt.Printf("║ %-36s ║\n", centerText(title, 36))
+	fmt.Println(borderMid)
+
+	if len(c.Inventaire) == 0 {
+		fmt.Printf("║ %-36s ║\n", centerText("Inventaire vide", 36))
+	} else {
+		counts := make(map[string]int)
+		for _, item := range c.Inventaire {
+			counts[item]++
+		}
+		i := 1
+		for item, qty := range counts {
+			line := fmt.Sprintf("[%d]  %-22s x%d", i, item, qty)
+			fmt.Printf("║ %-36s ║\n", line)
+			i++
+		}
+	}
+
+	fmt.Println(borderMid)
+	goldLine := fmt.Sprintf("Argent : %d", c.Argent)
+	fmt.Printf("║ %-36s ║\n", goldLine)
+	fmt.Println(borderBottom)
 }
