@@ -76,16 +76,16 @@ func Creation() Character {
 		if confirm == 1 {
 			fmt.Printf("\033[31mTon sang s’unit à celui des %ss\033[0m\n", classe)
 			return Character{
-				Nom:                nom,
-				Classe:             classe,
-				Niveau:             1,
-				PVMax:              pvMax,
-				PVActuels:          pvMax / 2,
-				Inventaire:         []string{},
-				Skill:              []string{"Coup de poing"},
-				Argent:             100,
-				Equipment:          Equipment{},
-				CapaciteInventaire: 10,
+				Nom:               nom,
+				Classe:            classe,
+				Niveau:            1,
+				PVMax:             pvMax,
+				PVActuels:         pvMax / 2,
+				Inventaire:        []string{},
+				Skill:             []string{"Coup de poing"},
+				Argent:            100,
+				Equipment:         Equipment{},
+				CapaciteInventory: 10,
 			}
 		}
 	}
@@ -118,4 +118,11 @@ func SpellBook(c *Character) {
 	}
 	c.Skill = append(c.Skill, "Boule de feu")
 	fmt.Println("Vous avez appris le sort : Boule de feu")
+}
+
+func RecalculerPVMax(c *Character) {
+	c.PVMax = 90 + (c.Niveau-1)*10
+	if c.PVActuels > c.PVMax {
+		c.PVActuels = c.PVMax
+	}
 }
