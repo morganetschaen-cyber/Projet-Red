@@ -55,20 +55,30 @@ func HasItem(inventory []string, item string) bool {
 	}
 	return false
 }
+
+const (
+	reset = "\033[0m"
+
+	gris  = "\033[90m"
+	rouge = "\033[91m"
+	jaune = "\033[93m"
+	blanc = "\033[97m"
+)
+
 func AfficherInventaire(c *Character) {
 	for {
 		width := 40
-		borderTop := "╔" + strings.Repeat("═", width-2) + "╗"
-		borderMid := "╠" + strings.Repeat("═", width-2) + "╣"
-		borderBottom := "╚" + strings.Repeat("═", width-2) + "╝"
+		top := "┌" + strings.Repeat("─", width-2) + "┐"
+		mid := "├" + strings.Repeat("─", width-2) + "┤"
+		bot := "└" + strings.Repeat("─", width-2) + "┘"
 
-		fmt.Println(borderTop)
-		title := "INVENTAIRE"
-		fmt.Printf("║ %-36s ║\n", centerString(title, 36))
-		fmt.Println(borderMid)
+		fmt.Println(top)
+		title := "INVENTAIRE DU VOYAGEUR"
+		fmt.Printf("│ %-36s │\n", centerString(title, 36))
+		fmt.Println(mid)
 
 		if len(c.Inventaire) == 0 {
-			fmt.Printf("║ %-36s ║\n", centerString("Inventaire vide", 36))
+			fmt.Printf("│ %-36s │\n", centerString("(vide)", 36))
 		} else {
 			counts := make(map[string]int)
 			for _, item := range c.Inventaire {
@@ -76,24 +86,26 @@ func AfficherInventaire(c *Character) {
 			}
 			i := 1
 			for item, qty := range counts {
-				line := fmt.Sprintf("[%d] %-22s x%d", i, item, qty)
-				fmt.Printf("║ %-36s ║\n", line)
+				line := fmt.Sprintf("(%d) %-22s [x%d]", i, item, qty)
+				fmt.Printf("│ %-36s │\n", line)
 				i++
 			}
 		}
 
-		fmt.Println(borderMid)
-		goldLine := fmt.Sprintf("Argent : %d", c.Argent)
-		fmt.Printf("║ %-36s ║\n", goldLine)
-		fmt.Println(borderBottom)
+		fmt.Println(mid)
+		goldLine := fmt.Sprintf("Argent : %d pièces", c.Argent)
+		fmt.Printf("│ %-36s │\n", goldLine)
+		fmt.Println(bot)
 
+		fmt.Println()
+		fmt.Println("> Que souhaitez-vous faire ?")
 		if HasItem(c.Inventaire, "Potion") {
-			fmt.Println("1. Utiliser une potion de vie")
+			fmt.Println("   (1) Utiliser une potion de vie")
 		}
 		if HasItem(c.Inventaire, "Potion de poison") {
-			fmt.Println("2. Utiliser une potion de poison")
+			fmt.Println("   (2) Utiliser une potion de poison")
 		}
-		fmt.Println("0. Retour")
+		fmt.Println("   (0) Fermer l’inventaire")
 
 		var sub int
 		fmt.Print("> ")
