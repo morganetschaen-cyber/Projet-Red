@@ -27,19 +27,19 @@ func EquipItem(c *Character, item string) {
 			c.Inventaire = append(c.Inventaire, c.Equipment.Tete)
 		}
 		c.Equipment.Tete = item
-		c.PVMax += 10
+
 	case "Tunique de l’aventurier":
 		if c.Equipment.Torse != "" {
 			c.Inventaire = append(c.Inventaire, c.Equipment.Torse)
 		}
 		c.Equipment.Torse = item
-		c.PVMax += 25
+
 	case "Bottes de l’aventurier":
 		if c.Equipment.Pieds != "" {
 			c.Inventaire = append(c.Inventaire, c.Equipment.Pieds)
 		}
 		c.Equipment.Pieds = item
-		c.PVMax += 15
+
 	default:
 		fmt.Println("Cet objet ne peut pas être équipé.")
 		return
