@@ -88,4 +88,4 @@ func craftItem(c *Character, item string, ressources []string, prix int) bool {
 	AddInventory(c, item)
 
 	return true
-}
+
