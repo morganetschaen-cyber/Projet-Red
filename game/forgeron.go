@@ -1,14 +1,36 @@
 package game
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func Forgeron(c *Character) {
 	for {
-		fmt.Println("\n--- Forgeron ---")
-		fmt.Println("1. Chapeau de l’aventurier (Plume de Corbeau, Cuir de Sanglier)")
-		fmt.Println("2. Tunique de l’aventurier (Fourrure de Loup, Fourrure de Loup, Peau de Troll)")
-		fmt.Println("3. Bottes de l’aventurier (Fourrure de Loup, Cuir de Sanglier)")
-		fmt.Println("0. Retour")
+		width := 50
+		top := "┌" + strings.Repeat("─", width-2) + "┐"
+		sep := "├" + strings.Repeat("─", width-2) + "┤"
+		bot := "└" + strings.Repeat("─", width-2) + "┘"
+
+		fmt.Println(top)
+		fmt.Printf("│ %-46s │\n", center("⚒ FORGERON ⚒", 46))
+		fmt.Println(sep)
+
+		fmt.Printf("│ %-46s │\n", "1. Chapeau de l’aventurier")
+		fmt.Printf("│ %-46s │\n", "   → Plume de Corbeau, Cuir de Sanglier (5 or)")
+		fmt.Printf("│ %-46s │\n", "")
+
+		fmt.Printf("│ %-46s │\n", "2. Tunique de l’aventurier")
+		fmt.Printf("│ %-46s │\n", "   → Fourrure de Loup x2, Peau de Troll (5 or)")
+		fmt.Printf("│ %-46s │\n", "")
+
+		fmt.Printf("│ %-46s │\n", "3. Bottes de l’aventurier")
+		fmt.Printf("│ %-46s │\n", "   → Fourrure de Loup, Cuir de Sanglier (5 or)")
+		fmt.Printf("│ %-46s │\n", "")
+
+		fmt.Printf("│ %-46s │\n", "0. Retour")
+
+		fmt.Println(bot)
 
 		var choix int
 		fmt.Print("> ")
