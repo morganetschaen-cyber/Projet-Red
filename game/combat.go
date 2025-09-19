@@ -24,7 +24,6 @@ func CharacterTurn(c *Character, m *Monster) {
 		fmt.Printf("PV %s : %d/%d\n", m.Nom, m.PVActuels, m.PVMax)
 
 	case 2:
-
 		AfficherInventaire(c)
 
 	default:
