@@ -1,14 +1,25 @@
 package game
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func Forgeron(c *Character) {
+	width := 80
+
 	for {
-		fmt.Println("\n--- Forgeron ---")
-		fmt.Println("1. Chapeau de l’aventurier (Plume de Corbeau, Cuir de Sanglier)")
-		fmt.Println("2. Tunique de l’aventurier (Fourrure de Loup, Fourrure de Loup, Peau de Troll)")
-		fmt.Println("3. Bottes de l’aventurier (Fourrure de Loup, Cuir de Sanglier)")
-		fmt.Println("0. Retour")
+		fmt.Println()
+		fmt.Println("╔" + strings.Repeat("═", width-2) + "╗")
+		fmt.Println(center("✦ FORGERON ✦", width))
+		fmt.Println("╚" + strings.Repeat("═", width-2) + "╝")
+
+		fmt.Println("Que veux-tu façonner ?")
+		fmt.Println()
+		fmt.Println("[1] Chapeau de l’aventurier  → Plume de Corbeau, Cuir de Sanglier")
+		fmt.Println("[2] Tunique de l’aventurier  → Fourrure de Loup x2, Peau de Troll")
+		fmt.Println("[3] Bottes de l’aventurier   → Fourrure de Loup, Cuir de Sanglier")
+		fmt.Println("[0] Retour")
 
 		var choix int
 		fmt.Print("> ")
@@ -18,7 +29,7 @@ func Forgeron(c *Character) {
 		case 1:
 			if craftItem(c, "Chapeau de l’aventurier",
 				[]string{"Plume de Corbeau", "Cuir de Sanglier"}, 5) {
-				fmt.Println("Vous avez fabriqué un Chapeau de l’aventurier !")
+				fmt.Println("Vous avez façonné un Chapeau de l’aventurier !")
 				fmt.Println("Voulez-vous l’équiper ? (1=Oui / 0=Non)")
 				var rep int
 				fmt.Scan(&rep)
@@ -29,7 +40,7 @@ func Forgeron(c *Character) {
 		case 2:
 			if craftItem(c, "Tunique de l’aventurier",
 				[]string{"Fourrure de Loup", "Fourrure de Loup", "Peau de Troll"}, 5) {
-				fmt.Println("Vous avez fabriqué une Tunique de l’aventurier !")
+				fmt.Println("Vous avez façonné une Tunique de l’aventurier !")
 				fmt.Println("Voulez-vous l’équiper ? (1=Oui / 0=Non)")
 				var rep int
 				fmt.Scan(&rep)
@@ -40,7 +51,7 @@ func Forgeron(c *Character) {
 		case 3:
 			if craftItem(c, "Bottes de l’aventurier",
 				[]string{"Fourrure de Loup", "Cuir de Sanglier"}, 5) {
-				fmt.Println("Vous avez fabriqué des Bottes de l’aventurier !")
+				fmt.Println("Vous avez façonné des Bottes de l’aventurier !")
 				fmt.Println("Voulez-vous l’équiper ? (1=Oui / 0=Non)")
 				var rep int
 				fmt.Scan(&rep)
