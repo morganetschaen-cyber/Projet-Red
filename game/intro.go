@@ -25,19 +25,25 @@ func centerText(text string, width int) string {
 func AfficherIntro() bool {
 	width := 80
 
+	logo := []string{
+		"   ____  __.                            ",
+		"  |    |/ _|______ ___.__. ____   ____  ",
+		"  |      < \\_  __ <   |  |/    \\ /    \\ ",
+		"  |    |  \\ |  | \\/\\___  |   |  \\   |  \\",
+		"  |____|__ \\|__|   / ____|___|  /___|  /",
+		"          \\/       \\/         \\/     \\/ ",
+	}
+
 	fmt.Println("\033[31m")
-	fmt.Println(centerText("========================================", width))
-	fmt.Println(centerText("   ____  __.                            ", width))
-	fmt.Println(centerText("  |    |/ _|______ ___.__. ____   ____  ", width))
-	fmt.Println(centerText("  |      < \\_  __ <   |  |/    \\ /    \\ ", width))
-	fmt.Println(centerText("  |    |  \\ |  | \\/\\___  |   |  \\   |  \\", width))
-	fmt.Println(centerText("  |____|__ \\|__|   / ____|___|  /___|  /", width))
-	fmt.Println(centerText("          \\/       \\/         \\/     \\/ ", width))
-	fmt.Println(centerText("========================================", width))
+	fmt.Println("╔" + strings.Repeat("═", width-2) + "╗")
+	for _, line := range logo {
+		fmt.Printf("║%-78s║\n", centerText(line, 78))
+	}
+	fmt.Println("╚" + strings.Repeat("═", width-2) + "╝")
 	fmt.Println("\033[0m")
 
-	slowPrint("Bienvenue dans le monde de Krynn...")
-	slowPrint("Êtes-vous prêt à entrer ?")
+	slowPrint("Bienvenue à Krynn.")
+	slowPrint("Es-tu sûr de vouloir entrer ?")
 
 	fmt.Println("\033[32m1. Oui\033[0m  |  \033[31m2. Non\033[0m")
 	var choix int
@@ -46,13 +52,13 @@ func AfficherIntro() bool {
 
 	if choix == 2 {
 		fmt.Println("\033[33m")
-		slowPrint("Vous tournez le dos aux ténèbres... mais pour combien de temps ?")
+		slowPrint("Tu tournes le dos aux terres de Krynn...")
 		fmt.Println("\033[0m")
 		return false
 	}
 
-	fmt.Println("\033[36m")
-	slowPrint("...Très bien. Le destin vous attend.")
+	fmt.Println("\033[31m")
+	slowPrint("Ton voyage commence maintenant.")
 	fmt.Println("\033[0m")
 	return true
 }
