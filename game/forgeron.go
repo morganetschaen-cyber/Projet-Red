@@ -16,9 +16,9 @@ func Forgeron(c *Character) {
 
 		fmt.Println("Que veux-tu façonner ?")
 		fmt.Println()
-		fmt.Println("[1] Chapeau de l’aventurier  → Plume de Corbeau, Cuir de Sanglier")
-		fmt.Println("[2] Tunique de l’aventurier  → Fourrure de Loup x2, Peau de Troll")
-		fmt.Println("[3] Bottes de l’aventurier   → Fourrure de Loup, Cuir de Sanglier")
+		fmt.Println("[1] Chapeau   → Plume de Corbeau, Cuir de Sanglier")
+		fmt.Println("[2] Tunique   → Fourrure de Loup x2, Peau de Troll")
+		fmt.Println("[3] Bottes    → Fourrure de Loup, Cuir de Sanglier")
 		fmt.Println("[0] Retour")
 
 		var choix int
