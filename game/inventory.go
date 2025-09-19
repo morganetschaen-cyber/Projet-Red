@@ -65,7 +65,7 @@ const (
 	blanc = "\033[97m"
 )
 
-func AfficherInventaire(c *Character, m *Monster) {
+func AfficherInventaire(c *Character) {
 	for {
 		width := 40
 		top := "┌" + strings.Repeat("─", width-2) + "┐"
