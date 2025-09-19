@@ -3,150 +3,158 @@ package game
 import (
 	"fmt"
 	"math/rand"
+	"strings"
 )
 
 var premierVisite bool = true
 
 func Marchand(c *Character) {
-	for {
-		fmt.Println("\n--- Marchand ---")
+	width := 42
+	top := "┌" + strings.Repeat("─", width-2) + "┐"
+	mid := "├" + strings.Repeat("─", width-2) + "┤"
+	bot := "└" + strings.Repeat("─", width-2) + "┘"
 
+	fmt.Println(top)
+	fmt.Printf("│ %-38s │\n", centerString("MARCHAND", 38))
+	fmt.Println(mid)
+
+	if premierVisite {
+		fmt.Printf("│ %-38s │\n", "1. Potion de vie (GRATUITE)")
+	} else {
+		fmt.Printf("│ %-38s │\n", "1. Potion de vie (3 or)")
+	}
+	fmt.Printf("│ %-38s │\n", "2. Potion de poison (6 or)")
+	fmt.Printf("│ %-38s │\n", "3. Livre de Sort : Boule de Feu (25)")
+	fmt.Printf("│ %-38s │\n", "4. Fourrure de Loup (4 or)")
+	fmt.Printf("│ %-38s │\n", "5. Peau de Troll (7 or)")
+	fmt.Printf("│ %-38s │\n", "6. Cuir de Sanglier (3 or)")
+	fmt.Printf("│ %-38s │\n", "7. Plume de Corbeau (1 or)")
+	fmt.Printf("│ %-38s │\n", "8. Extension d'inventaire (20 or)")
+	fmt.Printf("│ %-38s │\n", "9. Vendre un objet en double")
+	fmt.Printf("│ %-38s │\n", "0. Retour")
+
+	fmt.Println(mid)
+	line := fmt.Sprintf("Argent actuel : %d", c.Argent)
+	fmt.Printf("│ %-38s │\n", line)
+	fmt.Println(bot)
+
+	var choix int
+	fmt.Scan(&choix)
+
+	switch choix {
+	case 1:
 		if premierVisite {
-			fmt.Println("1. Potion de vie (GRATUITE pour votre première visite)")
+			fmt.Println("Cette potion est gratuite pour votre première visite !")
+			AddInventory(c, "Potion de vie")
+			premierVisite = false
+		} else if c.Argent >= 3 {
+			c.Argent -= 3
+			AddInventory(c, "Potion de vie")
 		} else {
-			fmt.Println("1. Potion de vie (3 or)")
+			fmt.Println("Pas assez d'argent !")
 		}
-
-		fmt.Println("2. Potion de poison (6 or)")
-		fmt.Println("3. Livre de Sort : Boule de Feu (25 or)")
-		fmt.Println("4. Fourrure de Loup (4 or)")
-		fmt.Println("5. Peau de Troll (7 or)")
-		fmt.Println("6. Cuir de Sanglier (3 or)")
-		fmt.Println("7. Plume de Corbeau (1 or)")
-		fmt.Println("8. Extension d'inventaire (20 or)")
-		fmt.Println("9. Vendre un objet en double")
-		fmt.Println("0. Retour au menu")
-
-		fmt.Println("💰 Argent actuel :", c.Argent)
-
-		var choix int
-		fmt.Scan(&choix)
-
-		switch choix {
-		case 1:
-			if premierVisite {
-				fmt.Println("Cette potion est gratuite pour votre première visite !")
-				AddInventory(c, "Potion de vie")
-				premierVisite = false
-			} else if c.Argent >= 3 {
-				c.Argent -= 3
-				AddInventory(c, "Potion de vie")
-			} else {
-				fmt.Println("Pas assez d'argent !")
-			}
-			fmt.Println("Argent actuel :", c.Argent)
-			if sousMenuMarchand() {
-				return
-			}
-		case 2:
-			if c.Argent >= 6 {
-				c.Argent -= 6
-				AddInventory(c, "Potion de poison")
-			} else {
-				fmt.Println("Pas assez d'argent !")
-			}
-			fmt.Println("Argent actuel :", c.Argent)
-			if sousMenuMarchand() {
-				return
-			}
-
-		case 3:
-			if c.Argent >= 25 {
-				c.Argent -= 25
-				AddInventory(c, "Livre de Sort: Boule de feu")
-				SpellBook(c)
-			} else {
-				fmt.Println("Pas assez d'argent !")
-			}
-			fmt.Println("Argent actuel :", c.Argent)
-			if sousMenuMarchand() {
-				return
-			}
-
-		case 4:
-			if c.Argent >= 4 {
-				c.Argent -= 4
-				AddInventory(c, "Fourrure de Loup")
-			} else {
-				fmt.Println("Pas assez d'or.")
-			}
-			fmt.Println("Argent actuel :", c.Argent)
-			if sousMenuMarchand() {
-				return
-			}
-
-		case 5:
-			if c.Argent >= 7 {
-				c.Argent -= 7
-				AddInventory(c, "Peau de Troll")
-			} else {
-				fmt.Println("Pas assez d'or.")
-			}
-			fmt.Println("Argent actuel :", c.Argent)
-			if sousMenuMarchand() {
-				return
-			}
-
-		case 6:
-			if c.Argent >= 3 {
-				c.Argent -= 3
-				AddInventory(c, "Cuir de Sanglier")
-			} else {
-				fmt.Println("Pas assez d'or.")
-			}
-			fmt.Println("Argent actuel :", c.Argent)
-			if sousMenuMarchand() {
-				return
-			}
-
-		case 7:
-			if c.Argent >= 1 {
-				c.Argent -= 1
-				AddInventory(c, "Plume de Corbeau")
-			} else {
-				fmt.Println("Pas assez d'or.")
-			}
-			fmt.Println("Argent actuel :", c.Argent)
-			if sousMenuMarchand() {
-				return
-			}
-		case 8:
-			if c.Argent >= 20 {
-				c.Argent -= 20
-				c.CapaciteInventory += 5
-				fmt.Println("Votre inventaire peut contenir 5 objets de plus !")
-			} else {
-				fmt.Println("Pas assez d'or.")
-			}
-			fmt.Println("Argent actuel :", c.Argent)
-			if sousMenuMarchand() {
-				return
-			}
-
-		case 9:
-			sellDuplicates(c)
-			fmt.Println("Argent actuel :", c.Argent)
-			if sousMenuMarchand() {
-				return
-			}
-
-		case 0:
-			fmt.Println("Vous quittez le magasin.")
+		fmt.Println("Argent actuel :", c.Argent)
+		if sousMenuMarchand() {
 			return
-
-		default:
-			fmt.Println("Choix invalide.")
 		}
+	case 2:
+		if c.Argent >= 6 {
+			c.Argent -= 6
+			AddInventory(c, "Potion de poison")
+		} else {
+			fmt.Println("Pas assez d'argent !")
+		}
+		fmt.Println("Argent actuel :", c.Argent)
+		if sousMenuMarchand() {
+			return
+		}
+
+	case 3:
+		if c.Argent >= 25 {
+			c.Argent -= 25
+			AddInventory(c, "Livre de Sort: Boule de feu")
+			SpellBook(c)
+		} else {
+			fmt.Println("Pas assez d'argent !")
+		}
+		fmt.Println("Argent actuel :", c.Argent)
+		if sousMenuMarchand() {
+			return
+		}
+
+	case 4:
+		if c.Argent >= 4 {
+			c.Argent -= 4
+			AddInventory(c, "Fourrure de Loup")
+		} else {
+			fmt.Println("Pas assez d'or.")
+		}
+		fmt.Println("Argent actuel :", c.Argent)
+		if sousMenuMarchand() {
+			return
+		}
+
+	case 5:
+		if c.Argent >= 7 {
+			c.Argent -= 7
+			AddInventory(c, "Peau de Troll")
+		} else {
+			fmt.Println("Pas assez d'or.")
+		}
+		fmt.Println("Argent actuel :", c.Argent)
+		if sousMenuMarchand() {
+			return
+		}
+
+	case 6:
+		if c.Argent >= 3 {
+			c.Argent -= 3
+			AddInventory(c, "Cuir de Sanglier")
+		} else {
+			fmt.Println("Pas assez d'or.")
+		}
+		fmt.Println("Argent actuel :", c.Argent)
+		if sousMenuMarchand() {
+			return
+		}
+
+	case 7:
+		if c.Argent >= 1 {
+			c.Argent -= 1
+			AddInventory(c, "Plume de Corbeau")
+		} else {
+			fmt.Println("Pas assez d'or.")
+		}
+		fmt.Println("Argent actuel :", c.Argent)
+		if sousMenuMarchand() {
+			return
+		}
+	case 8:
+		if c.Argent >= 20 {
+			c.Argent -= 20
+			c.CapaciteInventory += 5
+			fmt.Println("Votre inventaire peut contenir 5 objets de plus !")
+		} else {
+			fmt.Println("Pas assez d'or.")
+		}
+		fmt.Println("Argent actuel :", c.Argent)
+		if sousMenuMarchand() {
+			return
+		}
+
+	case 9:
+		sellDuplicates(c)
+		fmt.Println("Argent actuel :", c.Argent)
+		if sousMenuMarchand() {
+			return
+		}
+
+	case 0:
+		fmt.Println("Vous quittez le magasin.")
+		return
+
+	default:
+		fmt.Println("Choix invalide.")
 	}
 }
 
