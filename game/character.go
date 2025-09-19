@@ -140,13 +140,13 @@ func RecalculerPVMax(c *Character) {
 	}
 	basePV += (c.Niveau - 1) * 10
 
-	if c.Equipment.Tete == "Chapeau de l’aventurier" {
+	if c.Equipment.Tete == "Chapeau" {
 		basePV += 10
 	}
-	if c.Equipment.Torse == "Tunique de l’aventurier" {
+	if c.Equipment.Torse == "Tunique" {
 		basePV += 25
 	}
-	if c.Equipment.Pieds == "Bottes de l’aventurier" {
+	if c.Equipment.Pieds == "Bottes" {
 		basePV += 15
 	}
 

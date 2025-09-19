@@ -22,19 +22,19 @@ func EquipItem(c *Character, item string) {
 	}
 
 	switch item {
-	case "Chapeau de l’aventurier":
+	case "Chapeau":
 		if c.Equipment.Tete != "" {
 			c.Inventaire = append(c.Inventaire, c.Equipment.Tete)
 		}
 		c.Equipment.Tete = item
 
-	case "Tunique de l’aventurier":
+	case "Tunique":
 		if c.Equipment.Torse != "" {
 			c.Inventaire = append(c.Inventaire, c.Equipment.Torse)
 		}
 		c.Equipment.Torse = item
 
-	case "Bottes de l’aventurier":
+	case "Bottes":
 		if c.Equipment.Pieds != "" {
 			c.Inventaire = append(c.Inventaire, c.Equipment.Pieds)
 		}
