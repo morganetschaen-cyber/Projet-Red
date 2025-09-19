@@ -27,25 +27,24 @@ func center(text string, width int) string {
 }
 
 func Creation() Character {
-	width := 50
-	fmt.Println(center("+-----------------------------+", width))
-	fmt.Println(center("|     CRÉATION DU VOYAGEUR    |", width))
-	fmt.Println(center("+-----------------------------+", width))
+	width := 80
+	fmt.Println(strings.Repeat("=", width))
+	fmt.Println(center("✦ CRÉATION DU VOYAGEUR ✦", width))
+	fmt.Println(strings.Repeat("=", width))
 
 	var nom string
 	fmt.Println("\nEntrez le nom du voyageur :")
 	fmt.Print("> ")
 	fmt.Scan(&nom)
-
 	if len(nom) > 0 {
 		nom = strings.ToUpper(nom[:1]) + strings.ToLower(nom[1:])
 	}
 
 	for {
 		fmt.Println("\nChoisis ton chemin :")
-		fmt.Println("1. Assassin      → Rapide, précis, impitoyable")
-		fmt.Println("2. Écorcheur     → Sauvage, brutal, sanguinaire")
-		fmt.Println("3. Nécromancien  → Sombre, mystique, impie")
+		fmt.Println("  [1] Assassin      → Rapide, précis, impitoyable")
+		fmt.Println("  [2] Écorcheur     → Sauvage, brutal, sanguinaire")
+		fmt.Println("  [3] Nécromancien  → Sombre, mystique, impie")
 		fmt.Print("> ")
 
 		var choix int
@@ -53,7 +52,6 @@ func Creation() Character {
 
 		var classe string
 		var pvMax int
-
 		switch choix {
 		case 1:
 			classe, pvMax = "Assassin", 90
@@ -74,7 +72,9 @@ func Creation() Character {
 		fmt.Scan(&confirm)
 
 		if confirm == 1 {
-			fmt.Printf("\033[31mTon sang s’unit à celui des %ss\033[0m\n", classe)
+			fmt.Println()
+			fmt.Println(center("✦ Tu es maintenant liée aux secrets de Krynn. ✦", width))
+
 			return Character{
 				Nom:               nom,
 				Classe:            classe,
@@ -92,11 +92,17 @@ func Creation() Character {
 }
 
 func DisplayInfo(c Character) {
-	fmt.Println("Nom :", c.Nom)
-	fmt.Println("Classe :", c.Classe)
-	fmt.Println("Niveau :", c.Niveau)
-	fmt.Println("Points de vie :", c.PVActuels, "/", c.PVMax)
-	fmt.Println("Inventaire :", c.Inventaire)
+	width := 60
+	fmt.Println("╔" + strings.Repeat("═", width-2) + "╗")
+	fmt.Println(center("✦ TON REFLET ✦", width))
+	fmt.Println("╚" + strings.Repeat("═", width-2) + "╝")
+
+	fmt.Printf("Nom       : %s\n", c.Nom)
+	fmt.Printf("Classe    : %s\n", c.Classe)
+	fmt.Printf("Niveau    : %d\n", c.Niveau)
+	fmt.Printf("PV        : %d / %d\n", c.PVActuels, c.PVMax)
+	fmt.Printf("Inventaire: %v\n", c.Inventaire)
+	fmt.Printf("Argent    : %d pièces\n", c.Argent)
 }
 
 func IsDead(c *Character) bool {
@@ -134,7 +140,6 @@ func RecalculerPVMax(c *Character) {
 	}
 	basePV += (c.Niveau - 1) * 10
 
-	// Бонуси от екипировка
 	if c.Equipment.Tete == "Chapeau de l’aventurier" {
 		basePV += 10
 	}
