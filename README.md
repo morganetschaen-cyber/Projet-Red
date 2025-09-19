@@ -47,5 +47,10 @@ Depuis le menu principal :
 git clone https://github.com/morganetschaen-cyber/projet-red_krynn.git
 cd projet-red_krynn
 
+Exécuter le code :
+```bash
+go run .
+
+
 
 
