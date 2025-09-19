@@ -1,16 +1,29 @@
 package game
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func AfficherMenu(heros *Character) {
+	width := 80
+
 	for {
-		fmt.Println("\n=== MENU PRINCIPAL ===")
-		fmt.Println("1. Afficher les informations du personnage")
-		fmt.Println("2. Accéder à l’inventaire")
-		fmt.Println("3. Marchand")
-		fmt.Println("4. Forgeron")
-		fmt.Println("5. Combat d’entraînement")
-		fmt.Println("0. Quitter")
+		fmt.Println()
+		fmt.Println("╔" + strings.Repeat("═", width-2) + "╗")
+		fmt.Println(centerText("✦ LES PORTES DE KRYNN ✦", width))
+		fmt.Println("╚" + strings.Repeat("═", width-2) + "╝")
+		fmt.Println()
+
+		fmt.Println("Que désires-tu faire, voyageur ?")
+		fmt.Println()
+
+		fmt.Println("[1] Observer ton reflet")
+		fmt.Println("[2] Examiner ton sac")
+		fmt.Println("[3] Aller chez le marchand")
+		fmt.Println("[4] Façonner ton équipement")
+		fmt.Println("[5] Affronter tes démons")
+		fmt.Println("[0] Quitter ce monde")
 
 		var choix int
 		fmt.Print("> ")
@@ -26,10 +39,10 @@ func AfficherMenu(heros *Character) {
 		case 4:
 			Forgeron(heros)
 		case 5:
-			fmt.Println("\nChoisissez votre adversaire :")
-			fmt.Println("1. Gobelin")
-			fmt.Println("2. Troll")
-			fmt.Println("3. Dragon")
+			fmt.Println("\nChoisis ton adversaire :")
+			fmt.Println("[1] Gobelin")
+			fmt.Println("[2] Troll")
+			fmt.Println("[3] Dragon")
 			var choixMonstre int
 			fmt.Print("> ")
 			fmt.Scan(&choixMonstre)
@@ -47,9 +60,12 @@ func AfficherMenu(heros *Character) {
 				continue
 			}
 			TrainingFight(heros, &monstre)
-		case 6:
-			fmt.Println("Au revoir !")
+
+		case 0:
+			fmt.Println("\nTu tournes le dos aux terres de Krynn...")
+			fmt.Println("Le voyage s’achève ici.")
 			return
+
 		default:
 			fmt.Println("Choix invalide.")
 		}
